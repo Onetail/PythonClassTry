@@ -14,6 +14,9 @@ if  __name__ == '__main__':
     print("update:")
     newadd.uPdate("wayne",500)
     newadd.oUtput()
+    print("delete:")
+    newadd.dElete("wayne")
+    newadd.oUtput()
     # pro = ft.ProductA()
     
     

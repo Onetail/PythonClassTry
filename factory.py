@@ -56,14 +56,23 @@ class LinkedList(ProductA):
         def uPdate(self,name,value):
                 tmp = ProductA.first 
                 while tmp != None:
-                        tmp.value = value if tmp.name == name else tmp.value
+                        # tmp.value = value  if tmp.name == name else tmp.value
+                        if tmp.name == name:
+                                tmp.value = value 
+                                break
                         tmp = tmp.next
 
-        def dElete(self):
-                pass 
-
+        def dElete(self,name):
+                tmp = ProductA.first
+                while tmp.next!=None:
+                        if tmp.next.name == name:
+                                tmp.next = tmp.next.next
+                                 
+                                break
+                        tmp = tmp.next
         def oUtput(self):
                 ProductA.tmp = ProductA.first 
+                print("{:}\t{:}\t{:}".format("UID","Name","Value"))
                 while ProductA.tmp != None:
                         print("{:}\t{:}\t{:}".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value))
                         ProductA.tmp = ProductA.tmp.next
