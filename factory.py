@@ -76,3 +76,5 @@ class LinkedList(ProductA):
                 while ProductA.tmp != None:
                         print("{:}\t{:}\t{:}".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value))
                         ProductA.tmp = ProductA.tmp.next
+
+        
