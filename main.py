@@ -32,10 +32,4 @@ if  __name__ == '__main__':
         newadd.aDd(number_list[i],name_list[i])
     newadd.oUtput()
 
-    #   try to use switch function 
-    score = int(input("Enter: "))
-    switch = score
-    {
-        1: lambda : print("test1"),
-        2: lambda : print("test2")
-    }.get(switch,None)()
+    test.sWitch()
