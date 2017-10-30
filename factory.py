@@ -24,8 +24,8 @@ class ProductA(Factory):
                 ProductA.next = None 
         
         def uPdate(self,name=None,value=None):
-                self.name = name if name is None else self.name
-                self.value = value  if value is None else self.value
+                self.name = name #if name is None else self.name
+                self.value = value  #if value is None else self.value
         
         #       to overwrite print
         def oUtput(self,text=""):

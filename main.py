@@ -17,9 +17,9 @@ if  __name__ == '__main__':
     # newadd.oUtput()
     # print("Update:")
     newadd.uPdate("wayne",500)
-    # newadd.oUtput()
+    # newadd.oUtput()`
     # print("Delete:")
-    newadd.dElete("wayne")
+    # newadd.dElete("wayne")
     # newadd.oUtput()
     
     number_list = {}
@@ -31,3 +31,11 @@ if  __name__ == '__main__':
     for i in range(len(number_list)):
         newadd.aDd(number_list[i],name_list[i])
     newadd.oUtput()
+
+    #   try to use switch function 
+    score = int(input("Enter: "))
+    switch = score
+    {
+        1: lambda : print("test1"),
+        2: lambda : print("test2")
+    }.get(switch,None)()
