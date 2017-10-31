@@ -14,14 +14,7 @@ if  __name__ == '__main__':
     newadd.aDd("jjj","200")
     newadd.aDd("wayne","333")
     newadd.aDd("paoso","400")
-    # newadd.oUtput()
-    # print("Update:")
     newadd.uPdate("wayne",500)
-    # newadd.oUtput()`
-    # print("Delete:")
-    # newadd.dElete("wayne")
-    # newadd.oUtput()
-    
     number_list = {}
     name_list = {}
     test = tse.Test()
@@ -33,3 +26,4 @@ if  __name__ == '__main__':
         newadd.aDd(number_list[i],name_list[i])
     newadd.oUtput()
     
+    test.sWitch(2,"http://www.google.com")
