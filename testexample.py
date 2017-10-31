@@ -9,12 +9,10 @@ class Test:
         number_list = [random.randint(0,999) for i in range(number)]
         return number_list
 
-    def sWitch(self):
+    def sWitch(self,type = 0):
         #   try to use switch function in python dictory
-        score = int(input("Enter: "))
-        switch = score
-        {
-            1: lambda : print("test1"),
-            2: lambda : print("test2")
-        }.setdefault(switch,lambda:print("none"))()
-        return switch
+        switch = {
+            3: self.rAndom()
+        }
+        
+        return switch.get(type)
