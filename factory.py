@@ -47,11 +47,12 @@ class LinkedList(ProductA):
         
         def aDd(self,name,value):
                 newnode = ProductA(name,value)
-                if ProductA.first == None:
+                if Global.COUNT == 0:
                         ProductA.first = newnode
                 else:
                         ProductA.last.next = newnode
                 ProductA.last = newnode
+                Global.COUNT+=1
         
         def uPdate(self,name,value):
                 tmp = ProductA.first 
@@ -64,12 +65,20 @@ class LinkedList(ProductA):
 
         def dElete(self,name):
                 tmp = ProductA.first
-                while tmp.next!=None:
-                        if tmp.next.name == name:
-                                tmp.next = tmp.next.next
-                                 
-                                break
-                        tmp = tmp.next
+                if ProductA.first.name == name: #       head
+                        tmp = tmp.next 
+                        ProductA.first = tmp 
+                elif ProductA.last.name == name:#       tail
+                        while tmp.next != ProductA.last:
+                                tmp = tmp.next 
+                        tmp.next = None 
+                        ProductA.last = tmp
+                else :
+                        while tmp.next!=None:
+                                if tmp.next.name == name:
+                                        tmp.next = tmp.next.next
+                                tmp = tmp.next
+                Global.COUNT -=1
         def oUtput(self):
                 ProductA.tmp = ProductA.first 
                 print("{:}\t{:}\t{:}".format("UID","Name","Value"))
@@ -77,4 +86,11 @@ class LinkedList(ProductA):
                         print("{:}\t{:}\t{:}".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value))
                         ProductA.tmp = ProductA.tmp.next
 
-        
+        def iSexist(self,name):
+                #       check the people exist
+                tmp = ProductA.first 
+                while tmp!=None:
+                        if tmp.name == name:
+                                return True
+                        tmp = tmp.next 
+                return False

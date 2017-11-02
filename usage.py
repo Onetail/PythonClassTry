@@ -14,6 +14,7 @@ class Main:
 			self.uSage()
 		else:
 			test = tse.Test()
+			model = tse.Model()
 			if sys.argv[1][1:].upper() == "MODEL":
 				if len(sys.argv) == 3:
 					#	for some type doing some thing
@@ -22,7 +23,7 @@ class Main:
 					else:
 							pass
 				else:
-						test.mOdelenvironment(ft)	#	normal running type
+						model.mOdelenvironment(ft)	#	normal running type
 
 			elif sys.argv[1][1:].upper() == "OPENURL":
 				if len(sys.argv)== 3:
