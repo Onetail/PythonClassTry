@@ -71,6 +71,12 @@ class Test:
 							self.mOdelmessage(5,data)
 						else:
 							self.mOdelmessage(4)
+					elif data.upper() == "PRINT" or data.upper() == "LIST":
+    						model.oUtput()
+					else:
+    						pass
+
+					
 				else:
 					self.mOdelmessage(3)
 					
