@@ -18,8 +18,8 @@ class Test:
 
 	def sAvefile(self,data=""):
 		
-		with open(Global.ADDRESS,"w",encoding = "utf-8") as fopen:
-			fopen.write("測試")
+		with open(Global.ADDRESS+"/data.txt","w",encoding = "utf-8") as fopen:
+			fopen.write(data)
 			
 	
 	def mAkedir(self):
@@ -93,6 +93,16 @@ class Model:
 								model.uPdate(data[0],data[1])
 							else:
 								self.mOdelmessage("Ename")
+					elif data.strip().upper() == "SAVE":
+						data = model.oUtput()
+						test = Test()
+						if os.path.exists(Global.ADDRESS):
+							test.sAvefile(data)
+						else:
+							test.mAkedir()
+							test.sAvefile(data)
+						self.mOdelmessage(8)
+					
 					else:
 						self.mOdelmessage(7)	
 				else:
@@ -117,7 +127,9 @@ class Model:
 		string += "\n\tdelete\t: to delete a personnel from model ."if type == 7 else ""
 		string += "\n\tupdate\t: to update already exist personnel's value ."if type == 7 else ""
 		string += "\n\tprint\t: to print detail from model ." if type == 7 else ""
-		
+		string += "\n\tsave\t: to save the file in data ." if type == 7 else ""
+
+		string += "\n\tAlready save data in file . \t" if type == 8 else ""
 		string += "\n\tError! the Name is not exist" if str(type).upper() == "ENAME" else ""
 		string += "\n"
 		return print(string)

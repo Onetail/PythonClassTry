@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+
+<script>
+    Mainaction = new function()
+    {
+        Initui()
+    }
+    function Initui()
+    {
+        var top_frame = document.createElement("div")
+        var center_frame = document.createElement("div")
+        var bottom_frame = document.createElement("div")
+
+        top_frame.id = "top_frame"
+        center_frame.id = "center_frame"
+        bottom_frame.id="bottom_frame"
+
+        document.body.appendChild(top_frame)
+        document.body.appendChild(center_frame)
+        document.body.appendChild(bottom_frame)
+
+        Initdraw()
+    }
+    function Initdraw()
+    {
+        
+        document.getElementById("top_frame").innerHTML = "_______________"
+
+        document.getElementById("center_frame").innerHTML = "center"
+        document.getElementById("bottom_frame").innerHTML = "_______________"
+    }
+
+</script>

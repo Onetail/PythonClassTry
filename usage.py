@@ -15,22 +15,22 @@ class Main:
 		else:
 			test = tse.Test()
 			model = tse.Model()
-			if sys.argv[1][1:].upper() == "MODEL":
+			if sys.argv[1][1:].strip().upper() == "MODEL":
 				if len(sys.argv) == 3:
 					#	for some type doing some thing
-					if sys.argv[2][:].upper() == "BUILD":
+					if sys.argv[2][:].strip().upper() == "BUILD":
 							pass
 					else:
 							pass
 				else:
 						model.mOdelenvironment(ft)	#	normal running type
 
-			elif sys.argv[1][1:].upper() == "OPENURL":
+			elif sys.argv[1][1:].strip().upper() == "OPENURL":
 				if len(sys.argv)== 3:
 					test.oPensystem(sys.argv[2])
 				else:
 					self.eRror(1)
-			elif sys.argv[1][1:].upper() == "MAKE":
+			elif sys.argv[1][1:].strip().upper() == "MAKE":
 					test.mAkedir()
 			else:
 				self.uSage()

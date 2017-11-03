@@ -24,7 +24,7 @@ class ProductA(Factory):
                 ProductA.next = None 
         
         def uPdate(self,name=None,value=None):
-                self.name = name #if name is None else self.name
+                self.name = name #i     f name is None else self.name
                 self.value = value  #if value is None else self.value
         
         #       to overwrite print
@@ -80,12 +80,17 @@ class LinkedList(ProductA):
                                 tmp = tmp.next
                 Global.COUNT -=1
         def oUtput(self):
+                string = ""
                 ProductA.tmp = ProductA.first 
                 print("{:}\t{:}\t{:}".format("UID","Name","Value"))
+                string += "<table border='0' width='300px'>"
+                string += "<tr><td>{:}</td><td>{:}</td><td>{:}</td></tr>".format("UID","Name","Value")
                 while ProductA.tmp != None:
                         print("{:}\t{:}\t{:}".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value))
+                        string += "<tr><td>{:}</td><td>{:}</td><td>{:}</td></tr>".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value)
                         ProductA.tmp = ProductA.tmp.next
-
+                string += "</table>"
+                return string
         def iSexist(self,name):
                 #       check the people exist
                 tmp = ProductA.first 
