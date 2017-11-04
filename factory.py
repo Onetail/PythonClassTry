@@ -83,13 +83,15 @@ class LinkedList(ProductA):
                 string = ""
                 ProductA.tmp = ProductA.first 
                 print("{:}\t{:}\t{:}".format("UID","Name","Value"))
-                string += "<table border='0' width='300px'>"
+                string += "<div id='centerframe'>"
+                string += "<table id='maintable' border='0' width='300px'>"
                 string += "<tr><td>{:}</td><td>{:}</td><td>{:}</td></tr>".format("UID","Name","Value")
                 while ProductA.tmp != None:
                         print("{:}\t{:}\t{:}".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value))
                         string += "<tr><td>{:}</td><td>{:}</td><td>{:}</td></tr>".format(ProductA.tmp.uid,ProductA.tmp.name,ProductA.tmp.value)
                         ProductA.tmp = ProductA.tmp.next
                 string += "</table>"
+                string += "</div>"
                 return string
         def iSexist(self,name):
                 #       check the people exist

@@ -1,1 +1,1 @@
-<table border='0' width='300px'><tr><td>UID</td><td>Name</td><td>Value</td></tr><tr><td>1</td><td>Root</td><td>1000</td></tr><tr><td>2</td><td>1</td><td>2</td></tr><tr><td>3</td><td>3</td><td>4</td></tr><tr><td>4</td><td>4</td><td>5</td></tr></table>
+<div id='centerframe'><table id='maintable' border='0' width='300px'><tr><td>UID</td><td>Name</td><td>Value</td></tr><tr><td>1</td><td>Root</td><td>1000</td></tr><tr><td>2</td><td>2</td><td>3</td></tr></table></div>

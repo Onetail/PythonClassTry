@@ -1,6 +1,9 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/assets/css/index.css">
+        <title>WayneChu</title>
+        <script src="https://unpkg.com/vue"></script>
     </head>
     <body>
     </body>
@@ -13,27 +16,19 @@
     }
     function Initui()
     {
-        var top_frame = document.createElement("div")
-        var center_frame = document.createElement("div")
-        var bottom_frame = document.createElement("div")
-
-        top_frame.id = "top_frame"
-        center_frame.id = "center_frame"
-        bottom_frame.id="bottom_frame"
-
-        document.body.appendChild(top_frame)
-        document.body.appendChild(center_frame)
-        document.body.appendChild(bottom_frame)
+        var topframe = document.createElement("div")
+        topframe.id = "topframe"
+       
+        document.body.appendChild(topframe)
+       
 
         Initdraw()
     }
     function Initdraw()
     {
         
-        document.getElementById("top_frame").innerHTML = "_______________"
-
-        document.getElementById("center_frame").innerHTML = "center"
-        document.getElementById("bottom_frame").innerHTML = "_______________"
+        document.getElementById("topframe").innerHTML = "<img width='200vw' height='100vh' src='/assets/images/title.png'></img>"
+       
     }
 
 </script>

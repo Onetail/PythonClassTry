@@ -1,0 +1,32 @@
+<html>
+    <head>
+       
+    </head>        
+    <body>
+       <hr>
+       <div id="app">
+                {{message}}
+        </div>
+       <div id="bottomframe">
+            <div class="Btnstyle">
+                    按鈕1
+            </div>
+            <div class="Btnstyle">
+                    按鈕2
+            </div>
+            <div class="Btnstyle">
+                    按鈕3
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+        var app = new Vue(
+                {
+                        el: '#app',
+                        data:{
+                                message: 'Hello vue!'
+                        }
+                })
+</script>
