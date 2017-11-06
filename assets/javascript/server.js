@@ -6,25 +6,20 @@ const fs = require("fs")
 FILEDATA = ""
 SERVEROPENCLOSE = false
 
-imagesarray = ["title.png","background.png"] //  圖片array
+IMAGESARRAY = ["title.png","background.png"] //  圖片array
+
 mAinrunning = new function()
 {
     
     for(var i = 1 ; i <=25;i++)
     {
-        imagesarray.push(i+".jpg")
+        IMAGESARRAY.push(i+".jpg")
     }
 
-    
-}
-
-app.get('/', function(req, res){
     fs.readFile("../../index.html",'utf8',(err,data)=>
     {
         if (err) throw err 
         FILEDATA = data
-
-        res.setHeader('Content-Type', 'text/html');
         console.log(FILEDATA)
         console.log(__dirname + '/../../data/data.txt')
         // res.sendFile("index.html" , {root:'../../'})
@@ -34,24 +29,29 @@ app.get('/', function(req, res){
             fs.readFile("../../bottomlayout.html","utf-8",(err,data)=>
             {
                 FILEDATA += data 
-                res.send(FILEDATA)
-                res.end()
             })
         })
         
-    })
-    
+    })    
+}
+
+app.get('/', (req, res)=>
+{
+    res.setHeader('Content-Type', 'text/html');
+    res.send(FILEDATA)
+    res.end()
 });
 app.get("/assets/css/index.css",(req,res)=>
 {
     res.sendFile("index.css",{root:'../../assets/css/'})
 })
 
-for(let i = 0;i<imagesarray.length;i++)
+
+for(let i = 0;i<IMAGESARRAY.length;i++)
 {
-    app.get("/assets/images/"+imagesarray[i],(req,res)=>
+    app.get("/assets/images/"+IMAGESARRAY[i],(req,res)=>
     {
-        res.sendFile(imagesarray[i],{root:'../../assets/images'})
+        res.sendFile(IMAGESARRAY[i],{root:'../../assets/images'})
     })
 }
 
