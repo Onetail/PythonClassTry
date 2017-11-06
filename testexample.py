@@ -94,7 +94,7 @@ class Model:
 							else:
 								self.mOdelmessage("Ename")
 					elif data.strip().upper() == "SAVE":
-						data = model.oUtput()
+						data = model.sAvetofile()
 						test = Test()
 						if os.path.exists(Global.ADDRESS):
 							test.sAvefile(data)
@@ -102,7 +102,13 @@ class Model:
 							test.mAkedir()
 							test.sAvefile(data)
 						self.mOdelmessage(8)
-					
+					elif data.strip().upper() == "RANDOM":
+							test = Test()
+							randomname = test.rAndom()
+							randomvalue = test.rAndom()
+							for i in range(len(randomname)):
+									model.aDd(randomname[i],randomvalue[i])
+							self.mOdelmessage(9)
 					else:
 						self.mOdelmessage(7)	
 				else:
@@ -128,8 +134,10 @@ class Model:
 		string += "\n\tupdate\t: to update already exist personnel's value ."if type == 7 else ""
 		string += "\n\tprint\t: to print detail from model ." if type == 7 else ""
 		string += "\n\tsave\t: to save the file in data ." if type == 7 else ""
+		string += "\n\trandom\t: to random 10 number in linkedlist ." if type == 7 else ""
 
 		string += "\n\tAlready save data in file . \t" if type == 8 else ""
+		string += "\n\tInsert into 10 random number . \t" if type == 9 else ""
 		string += "\n\tError! the Name is not exist" if str(type).upper() == "ENAME" else ""
 		string += "\n"
 		return print(string)

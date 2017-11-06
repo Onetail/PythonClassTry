@@ -6,7 +6,7 @@ const fs = require("fs")
 FILEDATA = ""
 SERVEROPENCLOSE = false
 
-imagesarray = ["title.png"] //  圖片array
+imagesarray = ["title.png","background.png"] //  圖片array
 mAinrunning = new function()
 {
     

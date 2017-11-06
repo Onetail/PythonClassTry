@@ -1,41 +1,88 @@
+
+
 body
 {
     margin: 1%;
     padding: 1%;
+    background:url(../images/background.png) center center no-repeat;
+    background-size: cover;
 }
 #topframe
 {
     text-align: center;
     margin: 3vh;
 }
-
+#titleimg:hover
+{
+    width:30%;
+    
+    -webkit-transition: width 1s;
+    -moz-transition: width 1s;
+    transition: width 1s;
+}
+#titleimg:not(:hover)
+{
+    width:20%;
+    -webkit-transition: width 1s;
+    -moz-transition: width 1s;
+    transition: width 1s;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 #centerframe
 {
-   
+
+   height:50%;
+   overflow: hidden;
 }
+#centerframe:hover
+{
+    position: relative;
+    left:7.5px;
+    overflow-y:scroll;
+}
+/* python 後台data */
 #maintable
 {
+    font-family: serif;
     margin: 0 auto;
+    
 }
+
 #bottomframe
 {
-    display: inline;
+    position: absolute;
+    left:5%;
+    top:30%;
+    /* display: flex; */
+    
 }
 .Btnstyle
 {
     border-radius: 5px;
     box-sizing: border-box;
-    padding-top:8px;
+    padding-top:2px;
     cursor: pointer;
     text-align: center;
     font-family: Microsoft JhengHei, Helvetica, sans-serif;
     /*display: inline-block;*/
-    height:70px;
-    width:180px;
+    height:40px;
+    width:120px;
     font-size:30px;
-    color:white;
-    background-color: brown;
-    margin: 20px;
+    color:#27706d1e;
+    background-color: rgb(156, 114, 58);
+    /* margin: 20px; */
     opacity: .5;
     -ms-transform: scale(1); /* IE 9 */
     -webkit-transform: scale(1); /* Safari */
