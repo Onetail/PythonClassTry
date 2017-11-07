@@ -1,5 +1,4 @@
 
-
 body
 {
     margin: 1%;
@@ -29,7 +28,6 @@ body
 }
 ::-webkit-scrollbar {
     width: 15px;
-    
 }
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
@@ -43,14 +41,16 @@ body
 #centerframe
 {
 
-   height:50%;
+   height:60%;
    overflow: hidden;
+   
 }
 #centerframe:hover
 {
     position: relative;
     left:7.5px;
     overflow-y:scroll;
+    
 }
 /* python 後台data */
 #maintable
@@ -59,15 +59,60 @@ body
     margin: 0 auto;
     
 }
+.classimage
+{
+    width:40vw;
+    height:50vh;
+    -webkit-transition: .7s;
+    -moz-transition: .7s;
+    transition: .7s;
+}
+.classimage:active
+{
+    width:60vw;
+    height:60vh;
+    -webkit-transition: .7s;
+    -moz-transition: .7s;
+    transition: .7s;
+}
 
 #bottomframe
 {
     position: absolute;
-    left:5%;
+    left:2%;
     top:30%;
     /* display: flex; */
     
 }
+.menudata,.menuclass,.menuthree   /*   the first btn menu   */
+{
+    margin:0 auto;
+    opacity: .5;
+    display: none;
+    border-radius:  2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    background-color: #f3bf8d;
+    height:30px;
+    width:90px;
+    font-size:20px;
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari */
+    transform: scale(1);
+    -webkit-transition: transform .5s;
+    transition:  transform .5s;
+}
+.menudata:hover,.menuclass:hover,.menuthree :hover
+{
+    opacity: 1;
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari */
+    transform: scale(1.05);
+     -webkit-transition: opacity .5s,transform .5a;
+    transition: opacity .5s,transform .5s;
+}
+
 .Btnstyle
 {
     border-radius: 5px;

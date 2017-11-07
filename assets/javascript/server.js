@@ -3,12 +3,13 @@ const http = require('http').Server(app);
 const fs = require("fs")
 // const path = require("path")
 // app.use(bodyparser());
-FILEDATA = ""
+FILEDATA = ""   
+HTMLDATA = ""  
 SERVEROPENCLOSE = false
 
 IMAGESARRAY = ["title.png","background.png"] //  圖片array
 
-mAinrunning = new function()
+mAinrunning = new function()    // init fs and array
 {
     
     for(var i = 1 ; i <=25;i++)
@@ -19,16 +20,17 @@ mAinrunning = new function()
     fs.readFile("../../index.html",'utf8',(err,data)=>
     {
         if (err) throw err 
-        FILEDATA = data
+        HTMLDATA = data
         console.log(FILEDATA)
         console.log(__dirname + '/../../data/data.txt')
         // res.sendFile("index.html" , {root:'../../'})
         fs.readFile("../../data/data.txt",'utf-8',(err,data)=>
         {
-            FILEDATA += data
+            FILEDATA = data
+            HTMLDATA += data
             fs.readFile("../../bottomlayout.html","utf-8",(err,data)=>
             {
-                FILEDATA += data 
+                HTMLDATA += data 
             })
         })
         
@@ -37,13 +39,27 @@ mAinrunning = new function()
 
 app.get('/', (req, res)=>
 {
+
     res.setHeader('Content-Type', 'text/html');
-    res.send(FILEDATA)
+    res.send(HTMLDATA)
     res.end()
+       
 });
+app.post("/pydata",(req,res)=>
+{
+    res.send(FILEDATA)
+})
+app.post("/classimage",(req,res)=>
+{
+    res.send(IMAGESARRAY)   
+})
 app.get("/assets/css/index.css",(req,res)=>
 {
     res.sendFile("index.css",{root:'../../assets/css/'})
+})
+app.get("/assets/javascript/feature.js",(req,res)=>
+{
+    res.sendFile(__dirname+"/feature.js")
 })
 
 

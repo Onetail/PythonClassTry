@@ -1,34 +1,109 @@
 <html>
 	<head>
-	   
+		 
 	</head>        
 	<body>
-	   <hr>
-	   <div id="app">
+		 <hr>
+		 <div id="app">
 				<div id="bottomframe">
-						<div class="Btnstyle">
-								{{btn1}}
-						</div>
-						<div class="Btnstyle">
+            
+            <div class="Btnstyle" v-on:click="detailbtn">
+                {{btn1}}
+              </div>
+                <div class= "menudata" v-on:click="detailmenu1">{{btn1data1}}</div>
+                <div class= "menudata" v-on:click="detailmenu2">{{btn1data2}}</div>
+                <div class= "menudata" v-on:click="detailmenu3">3</div>
+
+						<div class="Btnstyle" v-on:click="classbtn">
 								{{btn2}}
-						</div>
-						<div class="Btnstyle">
+            </div>
+              <div class="menuclass">1</div>
+              <div class="menuclass">2</div>
+              <div class="menuclass">3</div>
+
+						<div class="Btnstyle" v-on:click="anybtn">
 								{{btn3}}
-						</div>
+            </div>
+            <div class="menuthree">1</div>
+            <div class="menuthree">2</div>
+            <div class="menuthree">3</div>
 				</div>
 		</div>
 	</body>
 </html>
-
 <script>
-		var app = new Vue(
-				{
-						el: '#app',
-						data:{
-								btn1: '按鈕1',
-								btn2: '按鈕2',
-								btn3: '按鈕3'
-						}
-				})
-				
+  MENUTYPE = 0  //  0 = not choose 
+//  1 = choose 數據
+//  2 = choose 暫時
+//  3 = choose 3
+
+SPEEDTIME = 100 // jquery animation speed time
+
+var app = new Vue(
+{
+      el: '#app',
+      data:{
+              btn1: '數據',
+              btn2: '暫時',
+              btn3: '按鈕',
+              btn1data1: 'origin',
+              btn1data2: 'image'
+      },
+      methods:{
+          detailbtn: (event) =>
+          {
+            if(MENUTYPE == 0 || MENUTYPE != 1)
+            {
+              $("div.menudata").show(SPEEDTIME)
+              $("div.menuclass").hide(SPEEDTIME)
+              $("div.menuthree").hide(SPEEDTIME)
+              MENUTYPE = 1
+            }else
+            {
+              $("div.menudata").hide(SPEEDTIME)
+              MENUTYPE = 0
+            }                  
+          },
+          classbtn: (event)=>
+          {
+            if(MENUTYPE == 0 || MENUTYPE != 2)
+          {
+            $("div.menudata").hide(SPEEDTIME)
+            $("div.menuclass").show(SPEEDTIME)
+            $("div.menuthree").hide(SPEEDTIME)
+            MENUTYPE = 2
+          }else
+          {
+            $("div.menuclass").hide(SPEEDTIME)
+            MENUTYPE = 0
+          }
+        },
+          anybtn: (event)=>
+          {
+            if(MENUTYPE == 0 || MENUTYPE != 3)
+            {
+              $("div.menudata").hide(SPEEDTIME)
+              $("div.menuclass").hide(SPEEDTIME)
+              $("div.menuthree").show(SPEEDTIME)
+              MENUTYPE = 3
+            }else
+            {
+              $("div.menuthree").hide(SPEEDTIME)
+              MENUTYPE = 0
+            }
+          },
+          detailmenu1: (event)=>
+          {
+            $.post("/pydata",(data)=>
+                  {
+                    $("table#maintable").html(data)
+  
+                  })
+          },
+          detailmenu2:(event)=>
+          {
+            $("table#maintable").html(cLassimages())
+          }
+      }
+})
 </script>
