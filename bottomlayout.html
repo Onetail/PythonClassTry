@@ -1,34 +1,31 @@
-<html>
-	<head>
-		 
-	</head>        
-	<body>
+
 		 <hr>
 		 <div id="app">
 				<div id="bottomframe">
             
-            <div class="Btnstyle" v-on:click="detailbtn">
+            <div class="Btnstyle" id="detailbtn" v-on:click="detailbtn">
                 {{btn1}}
               </div>
-                <div class= "menudata" v-on:click="detailmenu1">{{btn1data1}}</div>
+                <div class= "menudata" v-on:click="detailmenu1($index)">{{btn1data1}}</div>
                 <div class= "menudata" v-on:click="detailmenu2">{{btn1data2}}</div>
-                <div class= "menudata" v-on:click="detailmenu3">3</div>
+                <!-- <div class= "menudata" v-on:click="detailmenu3">3</div> -->
 
-						<div class="Btnstyle" v-on:click="classbtn">
+						<div class="Btnstyle" id="classbtn" v-on:click="classbtn">
 								{{btn2}}
             </div>
-              <div class="menuclass">1</div>
+              <div class="menuclass" v-on:click="classmenu1">{{btn2class1}}</div>
               <div class="menuclass">2</div>
               <div class="menuclass">3</div>
 
-						<div class="Btnstyle" v-on:click="anybtn">
+						<div class="Btnstyle" id="anybtn" v-on:click="anybtn">
 								{{btn3}}
             </div>
             <div class="menuthree">1</div>
             <div class="menuthree">2</div>
             <div class="menuthree">3</div>
-				</div>
-		</div>
+        </div>
+    </div>
+    <!-- javascript input -->
 	</body>
 </html>
 <script>
@@ -47,7 +44,8 @@ var app = new Vue(
               btn2: '暫時',
               btn3: '按鈕',
               btn1data1: 'origin',
-              btn1data2: 'image'
+              btn1data2: 'image',
+              btn2class1: "search"
       },
       methods:{
           detailbtn: (event) =>
@@ -57,9 +55,13 @@ var app = new Vue(
               $("div.menudata").show(SPEEDTIME)
               $("div.menuclass").hide(SPEEDTIME)
               $("div.menuthree").hide(SPEEDTIME)
+              $('div#detailbtn').css("opacity","1")
+              $('div#classbtn').css("opacity","0.5")
+              $('div#anybtn').css("opacity","0.5")
               MENUTYPE = 1
             }else
             {
+              $('div#detailbtn').css("opacity","0.5")
               $("div.menudata").hide(SPEEDTIME)
               MENUTYPE = 0
             }                  
@@ -71,9 +73,13 @@ var app = new Vue(
             $("div.menudata").hide(SPEEDTIME)
             $("div.menuclass").show(SPEEDTIME)
             $("div.menuthree").hide(SPEEDTIME)
+            $('div#detailbtn').css("opacity","0.5")
+            $('div#classbtn').css("opacity","1")
+            $('div#anybtn').css("opacity","0.5")
             MENUTYPE = 2
           }else
           {
+            $('div#classbtn').css("opacity","0.5")
             $("div.menuclass").hide(SPEEDTIME)
             MENUTYPE = 0
           }
@@ -85,10 +91,14 @@ var app = new Vue(
               $("div.menudata").hide(SPEEDTIME)
               $("div.menuclass").hide(SPEEDTIME)
               $("div.menuthree").show(SPEEDTIME)
+              $('div#detailbtn').css("opacity","0.5")
+              $('div#classbtn').css("opacity","0.5")
+              $('div#anybtn').css("opacity","1")
               MENUTYPE = 3
             }else
             {
               $("div.menuthree").hide(SPEEDTIME)
+              $('div#anybtn').css("opacity","0.5")
               MENUTYPE = 0
             }
           },
@@ -102,8 +112,17 @@ var app = new Vue(
           },
           detailmenu2:(event)=>
           {
-            $("table#maintable").html(cLassimages())
+            $("table#maintable").html(dEtailimages())
+          },
+          classmenu1:(event) =>
+          {
+            $("table#maintable").html(cLasssearch())
           }
+
       }
+})
+$("img#loginicon").click(()=>
+{
+    $("div#loginframe").fadeIn(SPEEDTIME)
 })
 </script>

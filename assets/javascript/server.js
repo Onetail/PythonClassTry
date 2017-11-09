@@ -1,16 +1,28 @@
 const app = require('express')();
-const http = require('http').Server(app);
+// const https = require('https')
+const http = require("http").createServer(app)
 const fs = require("fs")
+
 // const path = require("path")
 // app.use(bodyparser());
 FILEDATA = ""   
 HTMLDATA = ""  
 SERVEROPENCLOSE = false
 
-IMAGESARRAY = ["title.png","background.png"] //  圖片array
+IMAGESARRAY = ["title.png","background.png","backgrounddark.png","login.png","close.png","searchbar.png"] //  圖片array
 
 mAinrunning = new function()    // init fs and array
 {
+    // var keyPath = __dirname + '/.ssl/private.key';
+    // var certPath = __dirname + '/.ssl/certificate.crt';
+    
+    // var hskey = fs.readFileSync(keyPath);
+    // var hscert = fs.readFileSync(certPath);
+    
+    // var options = {
+    //     key: hskey,
+    //     cert: hscert
+    // };
     
     for(var i = 1 ; i <=25;i++)
     {
@@ -72,6 +84,10 @@ for(let i = 0;i<IMAGESARRAY.length;i++)
 }
 
 //指定port
-http.listen(process.env.PORT || 80, function(){
-	console.log('listening on *:80' );
+// var server = https.createServer(options, App).listen(3000,function()
+// {
+// 	console.log("listening on 3000....");
+// });
+http.listen(process.env.PORT || 3000, function(){
+	console.log('listening on *:3000' );
 });
