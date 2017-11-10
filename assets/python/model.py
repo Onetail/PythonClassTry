@@ -1,5 +1,4 @@
 import assets.python.Global as Global
-import random
 import re
 import assets.python.filesystem as fs
 import os	

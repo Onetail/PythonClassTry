@@ -1,5 +1,6 @@
 import os 
 import assets.python.Global as Global
+import random
 
 class Test:
 	def rAndom(self,number = 10,type="normal"):
@@ -11,15 +12,19 @@ class Test:
 		data = os.system("start " + url) if url != "" else None
 		return  data
 
-	def sAvefile(self,data="",savefile="data.txt",type="w",pack = True):
+	def sAvefile(self,data="",savefile="data.txt",type="w",pack = True):	# if model == write pack == false save == true
 		if savefile =="":	#	if save = ' ' is error
 			savefile = "data.txt"
 		if savefile != "Package":
 			with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
-				fopen.write(data+"<br>\n")
+				fopen.write(data+"\n")
 			if savefile != "data.txt" and pack == True:
+				if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
+					with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
+							fopen.write("")
 				with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
-					fopen.write(savefile+" ")	
+					fopen.write(savefile+" ")		
+				
 			return False
 		else:
 			return True

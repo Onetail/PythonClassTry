@@ -14,13 +14,65 @@ function dEtailimages()
 }
 function cLasssearch()
 {
-    var searchbar =  document.createElement("div")
-    searchbar.id = "searchbar"
-    // document.getElementById("centerframe").appendChild(searchbar)
-    document.getElementById("searchbar").innerHTML = "<span id='searchtxt'><input type='text'></div>"
-    $("table#maintable").hide(SPEEDTIME,()=>
+    $("#maintable").html("")    //..clean data
+    ajaxdata = ""
+    $.ajax(
+        {
+            url: "/data/Package",
+            success: (data)=>
+            {
+               ajaxdata = data 
+            },
+            async:false
+        })
+        
+    ajaxdata = ajaxdata.split(" ")
+    for(let i in ajaxdata)
     {
-        $("div#searchbar").css("text-align","center")
-
+        console.log(ajaxdata[i])
+        let alldata = document.createElement("div")
+        alldata.id = "alldata"+ajaxdata[i]
+        alldata.className = "Btnstyle"
+        $("#maintable").append(alldata)
+        $("div#alldata"+ajaxdata[i]).text(ajaxdata[i])
+        $("div#alldata"+ajaxdata[i]).click(()=> //..onclick Package data's filename
+        {
+            dArkscreen(ajaxdata[i])
+        })
+    }
+}
+function dArkscreen(detail)
+{
+    screendata = ""
+    console.log(detail)
+    var darkbackground = document.createElement("div")
+    darkbackground.id = "darkbackground"+detail
+    $.ajax(
+        {
+            url: "/data/"+detail.toString(),
+            success: (data)=>
+            {
+                screendata = data 
+            },
+            async:false
+        })
+    console.log(screendata)
+    $(darkbackground).html(screendata)
+    $(darkbackground).css(
+        {
+            "position":"fixed",
+            "z-index":"99",
+            "width":"20vw",
+            "height":"60%",
+        })
+    $("#maintable").append(darkbackground)
+    $("div#bg").fadeIn(SPEEDTIME,()=>
+    {
+        $("div#bg").click(()=>
+        {
+            $(darkbackground).remove() 
+            $("div#bg").fadeOut(SPEEDTIME)   
+        })
     })
+    
 }

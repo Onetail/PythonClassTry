@@ -16,6 +16,7 @@ body
     background-color: black;
     opacity: .5;
     display: none;
+    z-index: 90;
 }
 #topframe
 {

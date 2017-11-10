@@ -107,6 +107,16 @@ function fIleurlset()
         })
         
     }
+    fs.readFile("../../data/Package","utf-8",(err,data)=>
+    {
+        if(err) throw err 
+        data = data.substring(0,data.length-1)
+        app.get("/data/Package",(req,res)=>
+        {
+            res.send(data)
+        })
+
+    })
 }
 //指定port
 // var server = https.createServer(options, App).listen(3000,function()
