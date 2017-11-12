@@ -198,7 +198,7 @@ body
     height:40px;
     width:120px;
     font-size:30px;
-    color:#27706d1e;
+    color:#0c201c;
     background-color: rgb(156, 114, 58);
     /* margin: 20px; */
     opacity: .5;
@@ -207,7 +207,7 @@ body
     transform: scale(1);
     -webkit-transition: transform .5s;
     transition:  transform .5s;
-    z-index: 1;
+    /* z-index: 1; */
 
 }
 .Btnstyle:hover

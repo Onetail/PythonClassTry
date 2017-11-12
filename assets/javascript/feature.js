@@ -35,6 +35,13 @@ function cLasssearch()
         alldata.className = "Btnstyle"
         $("#maintable").append(alldata)
         $("div#alldata"+ajaxdata[i]).text(ajaxdata[i])
+        $("div#alldata"+ajaxdata[i]).css(
+            {
+                "color":"#aadd11",
+                "background":"#112233",
+                "width":"100%",
+                "margin":"10px"
+            })
         $("div#alldata"+ajaxdata[i]).click(()=> //..onclick Package data's filename
         {
             dArkscreen(ajaxdata[i])
