@@ -69,7 +69,9 @@ function dArkscreen(detail)
         {
             "position":"fixed",
             "z-index":"99",
-            "width":"20vw",
+            "top":"20%",
+            "left":"30%",
+            "width":"35vw",
             "height":"60%",
         })
     $("#maintable").append(darkbackground)

@@ -17,7 +17,7 @@ class Test:
 			savefile = "data.txt"
 		if savefile != "Package":
 			with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
-				fopen.write(data+"\n")
+				fopen.write(data+"\n") if data != "" else fopen.write("")
 			if savefile != "data.txt" and pack == True:
 				if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
 					with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
