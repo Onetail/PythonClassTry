@@ -3,6 +3,7 @@ import re
 import assets.python.filesystem as fs
 import os	
 
+
 class Model:
 	def mOdelenvironment(self,model):
 			#	build a environment in command line
@@ -33,7 +34,7 @@ class Model:
 							self.mOdelmessage(5,data)
 						else:
 							self.mOdelmessage(4)
-					elif data.strip().upper() == "PRINT" or data.strip().upper() == "LIST":
+					elif data.strip().upper() == "PRINT" or data.strip().upper() == "LIST" or data.strip().upper() == "LS":
 							model.oUtput()
 					elif data.strip().upper() == "DELETE":
 							data = input(">Enter want to delete personnel 'Name': ")
@@ -83,8 +84,12 @@ class Model:
 								elif data.strip().upper() == "SAVE":
 									self.mOdelmessage(8)
 									test.sAvefile(savefile=savefile,type="a+",data="",pack=True)
+								elif  data.strip().upper() == "LIST" or data.strip().upper() =="PRINT" or data.strip().upper() =="LS":
+									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r"))
+
 								else:
-									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)					
+									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
+								
 					else:
 						self.mOdelmessage(7)	
 				else:
@@ -117,6 +122,7 @@ class Model:
 		string += "\n\tInsert into 10 random number . \t" if type == 9 else ""
 		string += "\n\tCannot use Package to filename . \t" if type == 10 else ""
 		string += "\n\tExit write line model . \t" if type == 11 else ""
+		string += "\n  {:10} \t".format(data) if type == 12 else ""
 
 		string += "\n\tError! the Name is not exist" if str(type).upper() == "ENAME" else ""
 		string += "\n"

@@ -28,6 +28,15 @@ class Test:
 			return False
 		else:
 			return True
+
+	def rEadfile(self,readfile="data.txt",type="r"):
+		if readfile=="":
+			readfile = "data.txt"
+		with open(Global.ADDRESS+"/"+readfile,type,encoding="utf=8") as fopen:
+			data = fopen.read()
+		return data
+			
+
 	def mAkedir(self):
 		#   try 'data' is exist? if yes do remove else if no do build
 		if os.path.exists(Global.ADDRESS):
