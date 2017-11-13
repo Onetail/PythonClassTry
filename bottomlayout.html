@@ -2,28 +2,33 @@
 		 <hr>
 		 <div id="app">
 				<div id="bottomframe">
-            
+          <div class="btnmenu">
             <div class="Btnstyle" id="detailbtn" v-on:click="detailbtn">
                 {{btn1}}
-              </div>
-                <div class= "menudata" v-on:click="detailmenu1">{{btn1data1}}</div>
-                <div class= "menudata" v-on:click="detailmenu2">{{btn1data2}}</div>
+            </div>
+              
+                  <div class= "menudata" v-on:click="detailmenu1">{{btn1data1}}</div>
+                  <div class= "menudata" v-on:click="detailmenu2">{{btn1data2}}</div>
+          </div>
                 <!-- <div class= "menudata" v-on:click="detailmenu3">3</div> -->
-
-						<div class="Btnstyle" id="classbtn" v-on:click="classbtn">
-								{{btn2}}
+            <div class="btnmenu">
+						    <div class="Btnstyle" id="classbtn" v-on:click="classbtn">
+								  {{btn2}}
+                </div>
+                <div class="menuclass" v-on:click="classmenu1">{{btn2class1}}</div>
+                <div class="menuclass">2</div>
+                <div class="menuclass">3</div>
             </div>
-              <div class="menuclass" v-on:click="classmenu1">{{btn2class1}}</div>
-              <div class="menuclass">2</div>
-              <div class="menuclass">3</div>
-
-						<div class="Btnstyle" id="anybtn" v-on:click="anybtn">
-								{{btn3}}
-            </div>
-            <div class="menuthree">1</div>
-            <div class="menuthree">2</div>
-            <div class="menuthree">3</div>
-        </div>
+            <div class="btnmenu">
+              <div class="Btnstyle" id="anybtn" v-on:click="anybtn">
+							  	{{btn3}}
+              </div>
+            
+              <div class="menuthree">1</div>
+              <div class="menuthree">2</div>
+              <div class="menuthree">3</div>
+            </div>    
+          </div>
     </div>
     <!-- javascript input -->
 	</body>

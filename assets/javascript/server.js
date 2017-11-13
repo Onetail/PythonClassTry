@@ -75,9 +75,14 @@ function hTmlurlset()
     {
         res.send(IMAGESARRAY)   
     })
+    //  import rwd
     app.get("/assets/css/index.css",(req,res)=>
     {
         res.sendFile("index.css",{root:'../../assets/css/'})
+    })
+    app.get("/assets/css/indexsmall.css",(req,res)=>
+    {
+        res.sendFile("indexsmall.css",{root:"../../assets/css/"})
     })
     app.get("/assets/javascript/feature.js",(req,res)=>
     {
