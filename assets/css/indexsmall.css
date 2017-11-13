@@ -14,9 +14,16 @@ body
     width:100%;
     height:100vh;
     background-color: black;
-    opacity: .5;
+    opacity: .7;
     display: none;
     z-index: 90;
+    background-size: cover;
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+    
 }
 #topframe
 {
@@ -115,14 +122,16 @@ body
 {
    height:80%;
    overflow: hidden;
+   position: relative;
+   overflow-y:scroll;
 }
-#centerframe:hover
+/* #centerframe:hover
 {
     position: relative;
     left:7.5px;
     overflow-y:scroll;
     
-}
+} */
 /* python 後台data */
 #maintable
 {
@@ -156,8 +165,19 @@ body
     display: flex;
     
 }
+#darkbackground
+{
+    position:fixed;
+    z-index:99;
+    top:15%;
+    left:10%;
+    width:80vw;
+    height:70%;
+    color:#1299ff;
+}
 .btnmenu
 {
+    /* 直行往上 */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -171,9 +191,9 @@ body
     cursor: pointer;
     text-align: center;
     background-color: #f3bf8d;
-    height:30px;
-    width:90px;
-    font-size:20px;
+    height:60px;
+    width:160px;
+    font-size:40px;
     -ms-transform: scale(1); /* IE 9 */
     -webkit-transform: scale(1); /* Safari */
     transform: scale(1);
@@ -227,9 +247,9 @@ body
     text-align: center;
     font-family: Microsoft JhengHei, Helvetica, sans-serif;
     /*display: inline-block;*/
-    height:50px;
-    width:150px;
-    font-size:30px;
+    height:60px;
+    width:180px;
+    font-size:36px;
     color:#a8caeb;
     background-color: rgb(38, 27, 245);
     /* margin: 20px; */

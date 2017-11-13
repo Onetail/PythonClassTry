@@ -147,7 +147,15 @@ body
     -moz-transition: .7s;
     transition: .7s;
 }
-
+#darkbackground
+{
+    position:fixed;
+    z-index:99;
+    top:20%;
+    left:25%;
+    width:55vw;
+    height:70%;
+}
 #bottomframe
 {
     position: absolute;

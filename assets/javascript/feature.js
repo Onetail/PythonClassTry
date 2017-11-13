@@ -53,7 +53,7 @@ function dArkscreen(detail)
     screendata = ""
     console.log(detail)
     var darkbackground = document.createElement("div")
-    darkbackground.id = "darkbackground"+detail
+    darkbackground.id = "darkbackground"
     $.ajax(
         {
             url: "/data/"+detail.toString(),
@@ -65,15 +65,6 @@ function dArkscreen(detail)
         })
     console.log(screendata)
     $(darkbackground).html(screendata)
-    $(darkbackground).css(
-        {
-            "position":"fixed",
-            "z-index":"99",
-            "top":"20%",
-            "left":"30%",
-            "width":"35vw",
-            "height":"60%",
-        })
     $("#maintable").append(darkbackground)
     $("div#bg").fadeIn(SPEEDTIME,()=>
     {
