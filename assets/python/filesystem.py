@@ -12,32 +12,25 @@ class Test:
 		data = os.system("start " + url) if url != "" else None
 		return  data
 
-	def sAvefile(self,data="",savefile="data.txt",type="w",pack = True):	# if model == write pack == false save == true
+	def sAvefile(self,data="",savefile="data.txt",type="w",pack = True,style="scroll"):	# if model == write pack == false save == true
 		if savefile =="":	#	if save = ' ' is error
 			savefile = "data.txt"
 		if savefile != "Package":
-			with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
-				fopen.write(data+"\n") if data != "" else fopen.write("")
+			if style.upper() == "MODEL1":
+				with open(Global.ADDRESS+"/"+savefile,"r",encoding = "utf-8") as fopen:
+					data = fopen.read()
+				with open(Global.ADDRESS+"/"+savefile,"w+",encoding = "utf-8") as fopen:
+					fopen.write("<div style='color:#ffaa39;font-size:48px'>")
+					fopen.write("\n"+data+"\n") if data != "" else fopen.write("")
+					fopen.write("</div>")
+			elif style.upper()=="SCROLL":		
+				with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
+					fopen.write(data+"\n") if data != "" else fopen.write("")
+			else:
+				print("\n\tNot have this save mode\n")
+
 			if savefile != "data.txt" and pack == True:
-				if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
-					with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
-							fopen.write("")
-				# if filename is repeat , do overwrite else add in Package
-				with open(Global.ADDRESS+"/Package","r",encoding="utf-8") as f:
-					Packagedata = f.read()
-					Packagedata = Packagedata.split(" ")
-					for i in range(len(Packagedata)):
-						if Packagedata[i] == savefile:
-							#repeat ! 
-							del Packagedata[i]
-							break
-					# remove list more space
-					Packagedata.remove('')
-					with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as f:
-						for i in range(len(Packagedata)):
-							f.write(Packagedata[i]+" ")
-				with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
-					fopen.write(savefile+" ")		
+				self.sAvepackagedata(savefile=savefile)
 				
 			return False
 		else:
@@ -75,3 +68,25 @@ class Test:
 			print("\n已刪除: "+os.getcwd()+"\\data\n***********************************")
 		else:
 			print("\nWARN:刪除失敗\n***********************************")
+
+	def sAvepackagedata(self,savefile=""):
+		# deal with Package problem repeat filename and space list
+		if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
+			with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
+				fopen.write("")
+			# if filename is repeat , do overwrite else add in Package
+		with open(Global.ADDRESS+"/Package","r",encoding="utf-8") as f:
+			Packagedata = f.read()
+			Packagedata = Packagedata.split(" ")
+			for i in range(len(Packagedata)):
+				if Packagedata[i] == savefile:
+					#repeat ! 
+					del Packagedata[i]
+					break
+			# remove list more space
+			Packagedata.remove('')
+			with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as f:
+				for i in range(len(Packagedata)):
+					f.write(Packagedata[i]+" ")
+		with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
+			fopen.write(savefile+" ")		

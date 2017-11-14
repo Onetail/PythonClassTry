@@ -81,9 +81,9 @@ class Model:
 								if data.strip().upper() == "EXIT":
 									self.mOdelmessage(11)
 									break
-								elif data.strip().upper() == "SAVE":
+								elif data.split(" ")[0].upper() == "SAVE":
 									self.mOdelmessage(8)
-									test.sAvefile(savefile=savefile,type="a+",data="",pack=True)
+									test.sAvefile(savefile=savefile,type="a+",data="",pack=True) if len(data.split(" "))==1 else test.sAvefile(savefile=savefile,type="a+",data="",pack=True,style=data.split(" ")[1])
 								elif  data.strip().upper() == "LIST" or data.strip().upper() =="PRINT" or data.strip().upper() =="LS":
 									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r"))
 								elif data.strip().upper() == "UPPER":
@@ -119,7 +119,7 @@ class Model:
 		string += "\n\tdelete\t: to delete a personnel from model ."if type == 7 else ""
 		string += "\n\tupdate\t: to update already exist personnel's value ."if type == 7 else ""
 		string += "\n\tprint\t: to print detail from model ." if type == 7 else ""
-		string += "\n\tsave\t: to save the file in data ." if type == 7 else ""
+		string += "\n\tsave (name)\t: to save the file in data ." if type == 7 else ""
 		string += "\n\trandom\t: to random 10 number in linkedlist ." if type == 7 else ""
 		string += "\n\twrite\t: to write line into file and save it ." if type == 7 else ""
 
