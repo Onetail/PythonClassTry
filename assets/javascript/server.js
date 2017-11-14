@@ -105,7 +105,7 @@ function fIleurlset()
         fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
         {
             if(err) throw err
-            app.get("/data/"+FILEARRAY[i],(req,res)=>
+            app.get("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
             {
                 res.send(data)
             })
