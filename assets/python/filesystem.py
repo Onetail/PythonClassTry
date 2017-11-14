@@ -29,11 +29,18 @@ class Test:
 		else:
 			return True
 
-	def rEadfile(self,readfile="data.txt",type="r"):
+	def rEadfile(self,readfile="data.txt",type="r",model="normal"):
 		if readfile=="":
 			readfile = "data.txt"
 		with open(Global.ADDRESS+"/"+readfile,type,encoding="utf=8") as fopen:
 			data = fopen.read()
+			if model != "normal":
+				datasize = data.split('\n')
+				response = datasize[len(datasize)-1] if datasize[len(datasize)-1]!='' else "此行無資料"
+				with open(Global.ADDRESS+"/"+readfile,"w+",encoding="utf-8") as f:
+					for i in range(len(datasize)-1):
+						f.write(datasize[i])
+				return response
 		return data
 			
 

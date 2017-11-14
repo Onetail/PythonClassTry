@@ -86,7 +86,8 @@ class Model:
 									test.sAvefile(savefile=savefile,type="a+",data="",pack=True)
 								elif  data.strip().upper() == "LIST" or data.strip().upper() =="PRINT" or data.strip().upper() =="LS":
 									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r"))
-
+								elif data.strip().upper() == "UPPER":
+									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r",model="endline"))
 								else:
 									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
 								
