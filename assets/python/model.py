@@ -87,7 +87,11 @@ class Model:
 								elif  data.strip().upper() == "LIST" or data.strip().upper() =="PRINT" or data.strip().upper() =="LS":
 									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r"))
 								elif data.strip().upper() == "UPPER":
+									# can remove end line in file and print it 
 									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r",model="endline"))
+								elif data.strip().upper() == "HELP":
+									#	to help you any feature
+									self.mOdelmessage(14)
 								else:
 									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
 								
@@ -124,6 +128,11 @@ class Model:
 		string += "\n\tCannot use Package to filename . \t" if type == 10 else ""
 		string += "\n\tExit write line model . \t" if type == 11 else ""
 		string += "\n  {:10} \t".format(data) if type == 12 else ""
+
+		string += "\n\tlist\t: to read file content ." if type == 14 else ""
+		string += "\n\tsave\t: to save to Package in Browser ." if type == 14 else ""
+		string += "\n\tupper\t: remove end line in file and print it ." if type == 14 else ""
+
 
 		string += "\n\tError! the Name is not exist" if str(type).upper() == "ENAME" else ""
 		string += "\n"
