@@ -22,6 +22,7 @@ class Test:
 				if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
 					with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
 							fopen.write("")
+				# if filename is repeat , return repeat else add in Package
 				with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
 					fopen.write(savefile+" ")		
 				

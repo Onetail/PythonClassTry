@@ -18,6 +18,7 @@ function cLasssearch()
     ajaxdata = ""
     $.ajax(
         {
+            type: "POST",
             url: "/data/Package",
             success: (data)=>
             {
@@ -56,6 +57,7 @@ function dArkscreen(detail)
     darkbackground.id = "darkbackground"
     $.ajax(
         {
+            type: "POST",
             url: "/data/"+detail.toString(),
             success: (data)=>
             {

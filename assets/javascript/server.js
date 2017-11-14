@@ -2,8 +2,7 @@ const app = require('express')();
 // const https = require('https')
 const http = require("http").createServer(app)
 const fs = require("fs")
-
-
+const url = require("./htmlcomposing")
 FILEDATA = ""   //..python string
 HTMLDATA = ""  //..web string  
 SERVEROPENCLOSE = false
@@ -28,6 +27,13 @@ mAinrunning = new function()    // init fs and array
     {
         IMAGESARRAY.push(i+".jpg")
     }
+    gEtfiledata()
+    console.log(FILEARRAY)
+    hTmlurlset()
+}
+function gEtfiledata()
+{
+    FILEARRAY = []  // init
     fs.readFile("../../data/Package","utf-8",(err,data)=>
     {
         if(err) throw err 
@@ -35,33 +41,15 @@ mAinrunning = new function()    // init fs and array
         for(var i = 0; i<data.length-1;i++){FILEARRAY.push(data[i])}
         fIleurlset()
     })
-    fs.readFile("../../index.html",'utf-8',(err,data)=>
-    {
-        if (err) throw err 
-        HTMLDATA = data
-        console.log(FILEDATA)
-        console.log(__dirname + '/../../data/data.txt')
-        // res.sendFile("index.html" , {root:'../../'})
-        fs.readFile("../../data/data.txt",'utf-8',(err,data)=>
-        {
-            if(err) throw err
-            FILEDATA = data
-            HTMLDATA += data
-            fs.readFile("../../bottomlayout.html","utf-8",(err,data)=>
-            {
-                HTMLDATA += data 
-            })
-        })
-        
-    }) 
-    console.log(FILEARRAY)
-    hTmlurlset()
+    url.cOmposing()
 }
 function hTmlurlset()
 {
+    //  put html , css , js file 
     app.get('/', (req, res)=>
     {
-    
+        
+        gEtfiledata()
         res.setHeader('Content-Type', 'text/html');
         res.send(HTMLDATA)
         res.end()
@@ -100,12 +88,13 @@ function hTmlurlset()
 }
 function fIleurlset()
 {
+    //  put save data to post
     for(let i =0;i<FILEARRAY.length;i++)
     {
         fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
         {
             if(err) throw err
-            app.get("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
+            app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
             {
                 res.send(data)
             })
@@ -116,7 +105,7 @@ function fIleurlset()
     {
         if(err) throw err 
         data = data.substring(0,data.length-1)
-        app.get("/data/Package",(req,res)=>
+        app.post("/data/Package",(req,res)=>
         {
             res.send(data)
         })
