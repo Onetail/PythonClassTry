@@ -1,0 +1,17 @@
+  <div><div style='color:#ffaa39;font-size:48px'><pre>
+邏輯閘 AND , OR , NOT , NAND 
+以NAND 可以代替AND OR 及 NOT
+(1) 以 NAND 實現 NOT
+
+X --[])o-- X'
+
+(2) 以NAND 實現 OR
+
+X--[])o--
+        |_
+           |)o--        
+        |- 
+Y--[])o--
+
+* 卡諾圖
+照順序 00 01 11 10

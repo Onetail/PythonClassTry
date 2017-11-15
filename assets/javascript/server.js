@@ -91,26 +91,47 @@ function fIleurlset()
     //  put save data to post
     for(let i =0;i<FILEARRAY.length;i++)
     {
-        fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
+        // fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
+        // {
+        //     if(err) throw err
+        //     app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
+        //     {
+        //         res.send(data)
+        //     })
+        // })
+        
+         // sync   
+        app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
         {
-            if(err) throw err
-            app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
+            fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
             {
                 res.send(data)
             })
         })
         
     }
-    fs.readFile("../../data/Package","utf-8",(err,data)=>
+    // sync
+    app.post("/data/Package",(req,res)=>
     {
-        if(err) throw err 
-        data = data.substring(0,data.length-1)
-        app.post("/data/Package",(req,res)=>
+        fs.readFile("../../data/Package","utf-8",(err,data)=>
         {
+            if(err) throw err
+            data = data.substring(0,data.length-1)
             res.send(data)
         })
 
     })
+
+    // fs.readFile("../../data/Package","utf-8",(err,data)=>
+    // {
+    //     if(err) throw err 
+    //     data = data.substring(0,data.length-1)
+    //     app.post("/data/Package",(req,res)=>
+    //     {
+    //         res.send(data)
+    //     })
+
+    // })
 }
 //指定port
 // var server = https.createServer(options, App).listen(3000,function()

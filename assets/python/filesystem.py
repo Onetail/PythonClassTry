@@ -20,12 +20,12 @@ class Test:
 				with open(Global.ADDRESS+"/"+savefile,"r",encoding = "utf-8") as fopen:
 					data = fopen.read()
 				with open(Global.ADDRESS+"/"+savefile,"w+",encoding = "utf-8") as fopen:
+					fopen.write("<div>")
 					fopen.write("<div style='color:#ffaa39;font-size:48px'>")
-					fopen.write("\n"+data+"\n") if data != "" else fopen.write("")
-					fopen.write("</div>")
+					fopen.write("\n"+data) if data != "" else fopen.write("")
 			elif style.upper()=="SCROLL":		
 				with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
-					fopen.write(data+"\n") if data != "" else fopen.write("")
+					fopen.write("\n"+data)
 			else:
 				print("\n\tNot have this save mode\n")
 
@@ -46,7 +46,7 @@ class Test:
 				response = datasize[len(datasize)-1] if datasize[len(datasize)-1]!='' else "此行無資料"
 				with open(Global.ADDRESS+"/"+readfile,"w+",encoding="utf-8") as f:
 					for i in range(len(datasize)-1):
-						f.write(datasize[i])
+						f.write(datasize[i]+"\n") if i != len(datasize)-2 else f.write(datasize[i])
 				return response
 		return data
 			
