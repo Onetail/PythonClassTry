@@ -1,6 +1,7 @@
 import os 
 import assets.python.Global as Global
 import random
+import assets.python.filestyle as fstyle
 
 class Test:
 	def rAndom(self,number = 10,type="normal"):
@@ -16,13 +17,13 @@ class Test:
 		if savefile =="":	#	if save = ' ' is error
 			savefile = "data.txt"
 		if savefile != "Package":
+			fs = fstyle.Style()
 			if style.upper() == "MODEL1":
-				with open(Global.ADDRESS+"/"+savefile,"r",encoding = "utf-8") as fopen:
-					data = fopen.read()
-				with open(Global.ADDRESS+"/"+savefile,"w+",encoding = "utf-8") as fopen:
-					fopen.write("<div>")
-					fopen.write("<div style='color:#ffaa39;font-size:48px'>")
-					fopen.write("\n"+data) if data != "" else fopen.write("")
+				fs.fIlestyle(savefile=savefile,color="#ffaa39",fontsize="48px")
+				
+			elif style.upper() == "MODEL2":
+				fs.fIlestyle(savefile=savefile,color="#ffaa39",fontsize="48px")
+
 			elif style.upper()=="SCROLL":		
 				with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
 					fopen.write("\n"+data)
@@ -90,3 +91,6 @@ class Test:
 					f.write(Packagedata[i]+" ")
 		with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
 			fopen.write(savefile+" ")		
+	
+	def rEmovestyle(self,savefile=""):
+		fstyle.Style().rEmovestyle(savefile=savefile)

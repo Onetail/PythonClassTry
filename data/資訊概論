@@ -1,4 +1,4 @@
-  <div><div style='color:#ffaa39;font-size:48px'><pre>
+<div class='scrollbar'><div id='centerframe'><div style='color:#ffaa39;font-size:48px'><pre>
 邏輯閘 AND , OR , NOT , NAND 
 以NAND 可以代替AND OR 及 NOT
 (1) 以 NAND 實現 NOT
@@ -15,3 +15,23 @@ Y--[])o--
 
 * 卡諾圖
 照順序 00 01 11 10
+
+要盡量圈越多的1
+作化簡
+
+
+期中考考題
+
+電腦的五大部門
+(電腦的運作)
+
+2進位 ,8進位 , 10進位,16進位
+的整數和小數互轉
+
+負數的表示法  9%
+
+布林運算式 (AND OR NOR NAND)
+
+萬用邏輯閘 (NAND NOR)
+
+半加法器,全加法器 25%
