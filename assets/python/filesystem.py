@@ -93,4 +93,4 @@ class Test:
 			fopen.write(savefile+" ")		
 	
 	def rEmovestyle(self,savefile=""):
-		fstyle.Style().rEmovestyle(savefile=savefile)
+		return fstyle.Style().rEmovestyle(savefile=savefile)

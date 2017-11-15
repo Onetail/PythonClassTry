@@ -92,7 +92,11 @@ class Model:
 								elif data.strip().upper() == "HELP":
 									#	to help you any feature
 									self.mOdelmessage(14)
-								
+								elif data.strip().upper() == "REMOVE":
+									if test.rEmovestyle(savefile=savefile):
+										self.mOdelmessage(15)
+									else:
+										self.mOdelmessage(16)
 								else:
 									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
 								
@@ -134,8 +138,10 @@ class Model:
 		string += "\n\tsave\t: to save to Package in Browser ." if type == 14 else ""
 		string += "\n\tupper\t: remove end line in file and print it ." if type == 14 else ""
 
+		string += "\n\tSuccess remove mode in file ." if type == 15 else ""
+		string += "\n\tError! the file no have mode ." if type == 16 else "" 
 
 		string += "\n\tError! the Name is not exist" if str(type).upper() == "ENAME" else ""
-		string += "\n"
+		string += "\n"	
 		return print(string)
 	
