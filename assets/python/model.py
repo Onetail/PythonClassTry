@@ -135,8 +135,9 @@ class Model:
 		string += "\n  {:10} \t".format(data) if type == 12 else ""
 
 		string += "\n\tlist\t: to read file content ." if type == 14 else ""
-		string += "\n\tsave\t: to save to Package in Browser ." if type == 14 else ""
+		string += "\n\tsave (mode)\t: to save to Package in Browser ." if type == 14 else ""
 		string += "\n\tupper\t: remove end line in file and print it ." if type == 14 else ""
+		string += "\n\tremove\t: remove file mode ." if type == 14 else ""
 
 		string += "\n\tSuccess remove mode in file ." if type == 15 else ""
 		string += "\n\tError! the file no have mode ." if type == 16 else "" 

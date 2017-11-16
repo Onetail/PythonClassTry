@@ -121,7 +121,7 @@ body
 {
     position: relative;
     left:7.5px;
-    overflow-y:scroll;
+    overflow:scroll;
     
 }
 /* python 後台data */
