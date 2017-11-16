@@ -76,14 +76,24 @@ class Model:
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
 							savefile = savefile.split(" ")[0]
+							test.sAvefile(savefile=savefile,type="a+",pack=False)
+							
 							while 1:
 								data = input(">>> ")
 								if data.strip().upper() == "EXIT":
 									self.mOdelmessage(11)
 									break
 								elif data.split(" ")[0].upper() == "SAVE":
-									self.mOdelmessage(8)
-									test.sAvefile(savefile=savefile,type="a+",data="",pack=True) if len(data.split(" "))==1 else test.sAvefile(savefile=savefile,type="a+",data="",pack=True,style=data.split(" ")[1])
+									if len(data.split(" "))==1:
+										test.sAvefile(savefile=savefile,type="a+",data="",pack=True)   
+										self.mOdelmessage(8)
+									else:
+										# check styleexist is exist? 
+										if test.sTyleexist(savefile=savefile):
+											self.mOdelmessage(13) 
+										else :
+											test.sAvefile(savefile=savefile,type="a+",data="",pack=True,style=data.split(" ")[1])
+											self.mOdelmessage(8)	
 								elif  data.strip().upper() == "LIST" or data.strip().upper() =="PRINT" or data.strip().upper() =="LS":
 									self.mOdelmessage(12,data = test.rEadfile(readfile=savefile,type="r"))
 								elif data.strip().upper() == "UPPER":
@@ -132,7 +142,8 @@ class Model:
 		string += "\n\tInsert into 10 random number . \t" if type == 9 else ""
 		string += "\n\tCannot use Package to filename . \t" if type == 10 else ""
 		string += "\n\tExit write line model . \t" if type == 11 else ""
-		string += "\n  {:10} \t".format(data) if type == 12 else ""
+		string += "\n{:10} \t".format(data) if type == 12 else ""
+		string += "\n\tError! The file already have mode ." if type == 13 else "" # file have mode do this
 
 		string += "\n\tlist\t: to read file content ." if type == 14 else ""
 		string += "\n\tsave (mode)\t: to save to Package in Browser ." if type == 14 else ""

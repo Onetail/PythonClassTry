@@ -1,4 +1,4 @@
-<div class='scrollbar'><div id='centerframe'><div style='color:#ffaa39;font-size:48px'><pre>
+<div class='scrollbar'><div id='centerframe'><div style='color:#fdda19;font-size:44px'><pre>
 2.7 #4 
 
 3hrs -> 400 bacteria
@@ -14,3 +14,14 @@ P(10) = 2000 => 2000 = Poe^(10k)
 => 2000/400^(10/3) = Po^(-7/3)
 => Po = (2000/400^(10/3))^(-3/7) ~= 200.6788
 ~= 201
+
+
+
+y = c1y1 + c2y2 + ... + cnyn +yp
+yc = c1y1 + ... +cntn
+y = yc + yp
+
+yp = -(11/12) - (1/2)x is a particular solution 
+of y^m - 6y^n + 11y' - 6y = 3x
+
+solution is y = yc + yp

@@ -22,3 +22,13 @@ class Style:
 					fopen.write("\n"+data[i]) if len(data)!=0 else fopen.write(data[i])
 			return True 
 		return False
+
+	def sTyleexist(self,savefile =""): # doing write model first check the styleexist is True/False
+		data = ""
+		with open(Global.ADDRESS+"/"+savefile,"r",encoding = "utf-8") as fopen:
+			data = fopen.read()
+		dataline = data.split("\n")
+		if dataline[0][:4] == "<div":
+			return True
+		else:
+			return False

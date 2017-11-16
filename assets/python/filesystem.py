@@ -22,11 +22,11 @@ class Test:
 				fs.fIlestyle(savefile=savefile,color="#ffaa39",fontsize="48px")
 				
 			elif style.upper() == "MODEL2":
-				fs.fIlestyle(savefile=savefile,color="#ffaa39",fontsize="48px")
+				fs.fIlestyle(savefile=savefile,color="#fdda19",fontsize="44px")
 
 			elif style.upper()=="SCROLL":		
 				with open(Global.ADDRESS+"/"+savefile,type,encoding = "utf-8") as fopen:
-					fopen.write("\n"+data)
+					fopen.write("\n"+data) if data != "" else fopen.write(data)
 			else:
 				print("\n\tNot have this save mode\n")
 
@@ -49,6 +49,10 @@ class Test:
 					for i in range(len(datasize)-1):
 						f.write(datasize[i]+"\n") if i != len(datasize)-2 else f.write(datasize[i])
 				return response
+		datasplit = data.split("\n")
+		data = ""
+		for i in range(len(datasplit)):
+			data += ">  "+datasplit[i]+"\n" if i != len(datasplit)-1 else ">  "+datasplit[i]
 		return data
 			
 
@@ -94,3 +98,6 @@ class Test:
 	
 	def rEmovestyle(self,savefile=""):
 		return fstyle.Style().rEmovestyle(savefile=savefile)
+
+	def sTyleexist(self,savefile=""):	# doing write model first check the styleexist is True/False
+		return fstyle.Style().sTyleexist(savefile=savefile)
