@@ -147,6 +147,7 @@ class Model:
 		string += "\n\tsave (name)\t: to save the file in data ." if type == 7 else ""
 		string += "\n\trandom\t: to random 10 number in linkedlist ." if type == 7 else ""
 		string += "\n\twrite\t: to write line into file and save it ." if type == 7 else ""
+		string += "\n\tupload\t: to upload local data to server ." if type == 7 else ""
 
 		string += "\n\tAlready save data in file . \t" if type == 8 else ""
 		string += "\n\tInsert into 10 random number . \t" if type == 9 else ""
