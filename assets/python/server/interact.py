@@ -27,10 +27,15 @@ class Connect:
 		self.transport.connect(username = Global.SERVERNAME,pkey =paramiko.RSAKey.from_private_key_file(Global.SERVERKEY))
 		self.sftp = paramiko.SFTPClient.from_transport(self.transport)
 
-	def sFtpput(self):
-		return self.sftp.put(os.getcwd()+Global.ADDRESS,Global.SERVERADDRESS)
+	def sFtpput(self,file="."):
+		return self.sftp.put(Global.ADDRESS+"/"+file,Global.SERVERADDRESS+"/"+file)
+	
 	def sFtplistdir(self):
 		return self.sftp.listdir(Global.SERVERADDRESS)
 
+	def sFtpremove(self,file="."):
+		return self.sftp.remove(Global.SERVERADDRESS+"/"+file)
+
 	def sFtpclose(self):
 		self.sftp.close()
+	

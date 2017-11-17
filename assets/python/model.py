@@ -72,8 +72,10 @@ class Model:
 							for i in range(len(randomname)):
 									model.aDd(randomname[i],randomvalue[i])
 							self.mOdelmessage(9)
+							
 					elif data.strip().upper() == "UPLOAD":
-						test.uPloadtoserver()
+						self.mOdelmessage(18) if test.uPloadtoserver() else self.mOdelmessage(19)
+
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
@@ -159,9 +161,11 @@ class Model:
 		string += "\n\tremove\t: remove file mode ." if type == 14 else ""
 		string += "\n\tclear\t: clear file data ." if type == 14 else ""
 
-		string += "\n\tSuccess remove mode in file ." if type == 15 else ""
+		string += "\n\tSuccess! remove mode in file ." if type == 15 else ""
 		string += "\n\tError! the file no have mode ." if type == 16 else "" 
 		string += "\n\tAlready clear the '{:}' file .".format(data) if type == 17 else ""
+		string += "\n\tSuccess! upload new detail to Server ." if type  == 18 else ""
+		string += "\n\tError! Connection come up with error to server ." if type == 19 else "" 
 
 		string += "\n\tError! the Name is not exist ." if str(type).upper() == "ENAME" else ""
 		return print(string)

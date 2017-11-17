@@ -97,15 +97,24 @@ class Test:
 		with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
 			fopen.write(savefile+" ")		
 	def uPloadtoserver(self):
-    	# ssh start
-		conn = interact.Connect() 
-		# sftp start 
-		conn.sFtpconnect()
-		# print(conn.sFtplistdir())
-		conn.sFtpput()
-		conn.sFtpclose()
-		print("finish")
-		
+		try:
+			# ssh start
+			conn = interact.Connect() 
+			# sftp start 
+			conn.sFtpconnect()		
+
+			serverfile = conn.sFtplistdir()
+			localfile = os.listdir(Global.ADDRESS)
+			for i in range(len(serverfile)):
+				conn.sFtpremove(file=serverfile[i])
+
+			for i in range(len(localfile)):
+				conn.sFtpput(file=localfile[i])
+			conn.sFtpclose()
+			conn.sShclose()
+		except:
+			return False
+		return True
 
 	def rEmovestyle(self,savefile=""):
 		return fstyle.Style().rEmovestyle(savefile=savefile)
