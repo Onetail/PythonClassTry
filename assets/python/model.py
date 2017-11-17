@@ -72,15 +72,17 @@ class Model:
 							for i in range(len(randomname)):
 									model.aDd(randomname[i],randomvalue[i])
 							self.mOdelmessage(9)
+					elif data.strip().upper() == "UPLOAD":
+						test.uPloadtoserver()
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
 							savefile = savefile.split(" ")[0]
 							test.sAvefile(savefile=savefile,type="a+",pack=False)
 							
-							while 1:
+							while Global.LOOPMODEL:
 								data = input(">>> ")
-								if data.strip().upper() == "EXIT":
+								if data.strip().upper() == "BYE":
 									self.mOdelmessage(11)
 									break
 								elif data.split(" ")[0].upper() == "SAVE":
@@ -111,6 +113,8 @@ class Model:
 								elif data.strip().upper() == "CLEAR":
 									test.sAvefile(savefile=savefile,type="w",pack=False)
 									self.mOdelmessage(17,data=savefile)
+								elif data.strip().upper() == "EXIT":
+									self.bReakloop()
 								else:
 									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
 								

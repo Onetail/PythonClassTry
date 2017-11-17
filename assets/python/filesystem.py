@@ -2,6 +2,7 @@ import os
 import assets.python.Global as Global
 import random
 import assets.python.filestyle as fstyle
+import assets.python.server.interact as interact
 
 class Test:
 	def rAndom(self,number = 10,type="normal"):
@@ -95,7 +96,17 @@ class Test:
 					f.write(Packagedata[i]+" ")
 		with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
 			fopen.write(savefile+" ")		
-	
+	def uPloadtoserver(self):
+    	# ssh start
+		conn = interact.Connect() 
+		# sftp start 
+		conn.sFtpconnect()
+		# print(conn.sFtplistdir())
+		conn.sFtpput()
+		conn.sFtpclose()
+		print("finish")
+		
+
 	def rEmovestyle(self,savefile=""):
 		return fstyle.Style().rEmovestyle(savefile=savefile)
 
