@@ -17,25 +17,34 @@ class Connect:
 		# stdin,stdout,srderr = ssh.exec_command("cd "+Global.SERVERADDRESS+" && ls -1 | wc -l")
 		# dirfilecounts = stdout.read().rstrip()
 
-		return self.ssh
+		return self
 
+	def sShexeccommand(self,command=""):
+		stdin,stdout,stderr = self.ssh.exec_command(command)
+		print(stdout.readlines())
+		return self
 	def sShclose(self):
 		self.ssh.close()
+		return self
 	
 	def sFtpconnect(self):
 		self.transport = paramiko.Transport((Global.SERVERIP,Global.SERVERPORT))
 		self.transport.connect(username = Global.SERVERNAME,pkey =paramiko.RSAKey.from_private_key_file(Global.SERVERKEY))
 		self.sftp = paramiko.SFTPClient.from_transport(self.transport)
+		return self
 
 	def sFtpput(self,file="."):
-		return self.sftp.put(Global.ADDRESS+"/"+file,Global.SERVERADDRESS+"/"+file)
+		self.sftp.put(Global.ADDRESS+"/"+file,Global.SERVERADDRESS+"/data/"+file)
+		return self
 	
 	def sFtplistdir(self):
-		return self.sftp.listdir(Global.SERVERADDRESS)
+		return self.sftp.listdir(Global.SERVERADDRESS+"/data")
 
 	def sFtpremove(self,file="."):
-		return self.sftp.remove(Global.SERVERADDRESS+"/"+file)
+		self.sftp.remove(Global.SERVERADDRESS+"/data/"+file)
+		return self
 
 	def sFtpclose(self):
 		self.sftp.close()
+		return self
 	

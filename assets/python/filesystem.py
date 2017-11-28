@@ -116,6 +116,17 @@ class Test:
 			return False
 		return True
 
+	def eXeccommandtoserver(self,command=""):
+		# try:
+		print(command)
+		conn = interact.Connect()
+			# conn.sShexeccommand(command="cd "+Global.SERVERADDRESS +"/assets/javascript && ls ")
+		conn.sShexeccommand(command=command)
+		conn.sShclose()
+		# except:
+			# return False
+		
+		return True
 	def rEmovestyle(self,savefile=""):
 		return fstyle.Style().rEmovestyle(savefile=savefile)
 

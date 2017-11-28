@@ -75,7 +75,14 @@ class Model:
 							
 					elif data.strip().upper() == "UPLOAD":
 						self.mOdelmessage(18) if test.uPloadtoserver() else self.mOdelmessage(19)
-
+					elif data.strip().upper() == "RESTART SERVER":
+						self.mOdelmessage(20,data = "restart") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever restart " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+					elif data.strip().upper() == "START SERVER":
+						self.mOdelmessage(20,data="start") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS+"/assets/javascript && forever start "+ Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+					elif data.strip().upper() == "STOP SERVER":
+						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS+"/assets/javascript && forever stop "+ Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+					elif data.strip().upper() == "MYSERVER":
+						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
@@ -118,6 +125,8 @@ class Model:
 								elif data.strip().upper() == "EXIT":
 									self.bReakloop()
 								else:
+									if data == "":
+										data = " " 
 									test.sAvefile(savefile=savefile,type="a+",data=data,pack=False)
 								
 					else:
@@ -167,6 +176,7 @@ class Model:
 		string += "\n\tAlready clear the '{:}' file .".format(data) if type == 17 else ""
 		string += "\n\tSuccess! upload new detail to Server ." if type  == 18 else ""
 		string += "\n\tError! Connection come up with error to server ." if type == 19 else "" 
+		string += "\n\tSuccess! {:5} the server".format(data) if type == 20 else ""
 
 		string += "\n\tError! the Name is not exist ." if str(type).upper() == "ENAME" else ""
 		return print(string)
