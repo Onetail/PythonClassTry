@@ -65,6 +65,8 @@ class Model:
 							result = test.sAvefile(savedata) if len(data.split(" "))==1 else test.sAvefile(savedata,savefile=data.split(" ")[1])
 						self.mOdelmessage(10) if result else self.mOdelmessage(8)
 
+					elif data.strip().upper() == "TEST":
+						test.cHeckpackagelist()
 					elif data.strip().upper() == "RANDOM":
 							#	can random 10 number into build model
 							randomname = test.rAndom()

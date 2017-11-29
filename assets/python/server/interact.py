@@ -9,14 +9,12 @@ class Connect:
 		self.transport = None
 		self.sShconnect()
 	def sShconnect(self):
-
+		# connect to server 
 		paramiko.util.log_to_file('paramiko.log')  # build a log file for watch log
 		self.ssh = paramiko.SSHClient()  
 		self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) # use public to check	
 		self.ssh.connect(Global.SERVERIP,username = Global.SERVERNAME,pkey=paramiko.RSAKey.from_private_key_file(Global.SERVERKEY)) # pkey = private key
-		# stdin,stdout,srderr = ssh.exec_command("cd "+Global.SERVERADDRESS+" && ls -1 | wc -l")
-		# dirfilecounts = stdout.read().rstrip()
-
+		
 		return self
 
 	def sShexeccommand(self,command=""):

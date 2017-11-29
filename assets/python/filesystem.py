@@ -80,23 +80,25 @@ class Test:
 		if not os.path.exists(Global.ADDRESS+"/Package"):	#	if package not exists run
 			with open(Global.ADDRESS +"/Package","w",encoding="utf-8") as fopen:
 				fopen.write("")
-			# if filename is repeat , do overwrite else add in Package
-		with open(Global.ADDRESS+"/Package","r",encoding="utf-8") as f:
-			Packagedata = f.read()
-			Packagedata = Packagedata.split(" ")
-			for i in range(len(Packagedata)):
-				if Packagedata[i] == savefile:
-					#repeat ! 
-					del Packagedata[i]
-					break
-			# remove list more space
-			Packagedata.remove('')
-			with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as f:
-				for i in range(len(Packagedata)):
-					f.write(Packagedata[i]+" ")
-		with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
-			fopen.write(savefile+" ")		
+		# if filename is repeat , do overwrite else add in Package
+		# with open(Global.ADDRESS+"/Package","r",encoding="utf-8") as f:
+		# 	Packagedata = f.read()
+		# 	Packagedata = Packagedata.split(" ")
+		# 	for i in range(len(Packagedata)):
+		# 		if Packagedata[i] == savefile:
+		# 			#repeat ! 
+		# 			del Packagedata[i]
+		# 			break
+		# 	# remove list more space
+		# 	Packagedata.remove('')
+		# 	with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as f:
+		# 		for i in range(len(Packagedata)):
+		# 			f.write(Packagedata[i]+" ")
+		# with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
+		# 	fopen.write(savefile+" ")		
+		self.cHeckpackagelist()
 	def uPloadtoserver(self):
+		self.cHeckpackagelist()
 		try:
 			# ssh start
 			conn = interact.Connect() 
@@ -117,14 +119,13 @@ class Test:
 		return True
 
 	def eXeccommandtoserver(self,command=""):
-		# try:
-		print(command)
-		conn = interact.Connect()
+		try:
+			conn = interact.Connect()
 			# conn.sShexeccommand(command="cd "+Global.SERVERADDRESS +"/assets/javascript && ls ")
-		conn.sShexeccommand(command=command)
-		conn.sShclose()
-		# except:
-			# return False
+			conn.sShexeccommand(command=command)
+			conn.sShclose()
+		except:
+			return False
 		
 		return True
 	def rEmovestyle(self,savefile=""):
@@ -132,3 +133,14 @@ class Test:
 
 	def sTyleexist(self,savefile=""):	# doing write model first check the styleexist is True/False
 		return fstyle.Style().sTyleexist(savefile=savefile)
+	
+	def cHeckpackagelist(self):
+		# update Package list
+		string = ""
+		for addr,dire,file in os.walk(Global.ADDRESS):
+			for i in range(len(file)):
+				string += file[i]+" " if file[i]!="Package" and file[i] !="data.txt" else ""
+		with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as fopen:
+			fopen.write(string)
+		
+		return self
