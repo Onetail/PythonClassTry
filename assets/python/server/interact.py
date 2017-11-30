@@ -18,8 +18,9 @@ class Connect:
 		return self
 
 	def sShexeccommand(self,command=""):
-		stdin,stdout,stderr = self.ssh.exec_command(command)
-		print(stdout.readlines())
+		
+		precommand = "PATH=/home/ubuntu/.nvm/versions/node/v6.11.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games ;"
+		stdin,stdout,stderr = self.ssh.exec_command(precommand + command)
 		return self
 	def sShclose(self):
 		self.ssh.close()

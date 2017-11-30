@@ -80,11 +80,11 @@ class Model:
 					elif data.strip().upper() == "RESTART SERVER":
 						self.mOdelmessage(20,data = "restart") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever restart " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "START SERVER":
-						self.mOdelmessage(20,data="start") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS+"/assets/javascript && forever start "+ Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+						self.mOdelmessage(20,data="start") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever start " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "STOP SERVER":
-						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS+"/assets/javascript && forever stop "+ Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever stop " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "MYSERVER":
-						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
+						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="ll") else self.mOdelmessage(19)
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
@@ -182,6 +182,9 @@ class Model:
 		}
 		# type =str(type).upper()
 		return print(switch.get(type)())
+
+	
+		""" old model """
 		# string = ""
 		# string += "\n\tBuild Linkedlist model success!\t" if type == 1 else ""
 		# string += "\n\tmodel is exist!\t" if type == 2 else ""
