@@ -17,10 +17,16 @@ class Connect:
 		
 		return self
 
-	def sShexeccommand(self,command=""):
-		
+	def sShexeccommand(self,command=""):		
 		precommand = "PATH=/home/ubuntu/.nvm/versions/node/v6.11.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games ;"
+		# stdin,stdout,stderr  = self.ssh.exec_command(precommand+"forever list")
+		# print(stdout.readlines())
+		# print(stderr.readlines())
+		
 		stdin,stdout,stderr = self.ssh.exec_command(precommand + command)
+		for i in stdout.readlines():
+			print(i)
+		# print(stderr.readlines())
 		return self
 	def sShclose(self):
 		self.ssh.close()
