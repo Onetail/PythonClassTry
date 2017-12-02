@@ -4,7 +4,7 @@ function dEtailimages()
     stringhtml = ""
     $.post("/classimage",(data)=>
     {
-        for(let i = 6; i < data.length ; i++)
+        for(let i = 6,max = data.length ; i < max ; i++)
         {
             stringhtml += "<img class='classimage' src=/assets/images/"+data[i]+"></img>"
             stringhtml += "<br>"
@@ -18,7 +18,7 @@ function cLasssearch()
     ajaxdata = ""
     $.ajax(
         {
-            type: "POST",
+            type: "GET",
             url: "/data/Package",
             success: (data)=>
             {
@@ -45,11 +45,11 @@ function cLasssearch()
             })
         $("div#alldata"+ajaxdata[i]).click(()=> //..onclick Package data's filename
         {
-            dArkscreen(ajaxdata[i])
+            dArkscreendetail(ajaxdata[i])
         })
     }
 }
-function dArkscreen(detail)
+function dArkscreendetail(detail)
 {
     screendata = ""
     console.log(detail)
@@ -57,7 +57,7 @@ function dArkscreen(detail)
     darkbackground.id = "darkbackground"
     $.ajax(
         {
-            type: "POST",
+            type: "GET",
             url: "/data/"+detail.toString(),
             success: (data)=>
             {

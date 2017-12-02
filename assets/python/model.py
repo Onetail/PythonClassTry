@@ -66,7 +66,7 @@ class Model:
 						self.mOdelmessage(10) if result else self.mOdelmessage(8)
 
 					elif data.strip().upper() == "TEST":
-						test.cHeckpackagelist()
+						test.eXeccommandtoserver(command="cat "+Global.SERVERADDRESS+"/data/講座")
 					elif data.strip().upper() == "RANDOM":
 							#	can random 10 number into build model
 							randomname = test.rAndom()
@@ -75,7 +75,7 @@ class Model:
 									model.aDd(randomname[i],randomvalue[i])
 							self.mOdelmessage(9)
 							
-					elif data.strip().upper() == "UPLOAD":
+					elif data.split(" ")[0].upper() == "UPLOAD":
 						self.mOdelmessage(18) if test.uPloadtoserver() else self.mOdelmessage(19)
 					elif data.strip().upper() == "RESTART SERVER":
 						self.mOdelmessage(20,data = "restart") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever restart " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
@@ -84,7 +84,8 @@ class Model:
 					elif data.strip().upper() == "STOP SERVER":
 						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever stop " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "MYSERVER":
-						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="ll") else self.mOdelmessage(19)
+						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
+					# elif data.strip().upper() == "TEST"
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
 							savefile = input(">>Send you want to save filename(not space): ")
@@ -158,8 +159,10 @@ class Model:
 			+ "\n\tsave (name)\t: to save the file in data ." \
 			+ "\n\trandom\t: to random 10 number in linkedlist ." \
 			+ "\n\twrite\t: to write line into file and save it ." \
-			+ "\n\tupload\t: to upload local data to server .",				
-			
+			+ "\n\tupload\t: to upload local data to server ." \
+			+ "\n\tstart server\t: make server on ." \
+			+ "\n\tstop server\t: make server off ." \
+			+ "\n\trestart server\t: make server restart .",				
 			8: lambda: "\n\tAlready save data in file . \t",
 			9: lambda: "\n\tInsert into 10 random number . \t",
 			10: lambda: "\n\tCannot use Package to filename . \t",

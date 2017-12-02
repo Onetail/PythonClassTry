@@ -26,7 +26,7 @@ class Connect:
 		stdin,stdout,stderr = self.ssh.exec_command(precommand + command)
 		for i in stdout.readlines():
 			print(i)
-		# print(stderr.readlines())
+		
 		return self
 	def sShclose(self):
 		self.ssh.close()

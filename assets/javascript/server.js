@@ -3,6 +3,7 @@ const app = require('express')();
 const http = require("http").createServer(app)
 const fs = require("fs")
 const url = require("./htmlcomposing")
+
 FILEDATA = ""   //..python string
 HTMLDATA = ""  //..web string  
 SERVEROPENCLOSE = false
@@ -38,7 +39,7 @@ function gEtfiledata()
     {
         if(err) throw err 
         data = data.split(" ")
-        for(var i = 0; i<data.length-1;i++){FILEARRAY.push(data[i])}
+        for(var i = 0,max = data.length-1 ; i<max;i++){FILEARRAY.push(data[i])}
         fIleurlset()
     })
     url.cOmposing()
@@ -77,7 +78,7 @@ function hTmlurlset()
         res.sendFile(__dirname+"/feature.js")
     })
     
-    for(let i = 0;i<IMAGESARRAY.length;i++)
+    for(let i = 0,max=IMAGESARRAY.length;i<max;i++)
     {
         app.get("/assets/images/"+IMAGESARRAY[i],(req,res)=>
         {
@@ -88,39 +89,48 @@ function hTmlurlset()
 }
 function fIleurlset()
 {
-    //  put save data to post
-    for(let i =0;i<FILEARRAY.length;i++)
-    {
-        // fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
-        // {
-        //     if(err) throw err
-        //     app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
-        //     {
-        //         res.send(data)
-        //     })
-        // })
-        
-         // sync   
-        app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
-        {
-            fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
-            {
-                res.send(data)
-            })
-        })
-        
-    }
     // sync
-    app.post("/data/Package",(req,res)=>
+    app.get("/data/Package",(req,res)=>
     {
         fs.readFile("../../data/Package","utf-8",(err,data)=>
         {
             if(err) throw err
+            FILEARRAY.length = 0
+            datasplit = data.split(" ")
+            for(var i = 0,max = datasplit.length-1 ; i<max;i++)
+            {
+                FILEARRAY.push(datasplit[i])
+                console.log("[+加入陣列 ] "+ datasplit[i])
+            }                
+            console.log("[+] 陣列內容" + FILEARRAY)
             data = data.substring(0,data.length-1)
+            //  put save data to post
+            for(let i =0,max = FILEARRAY.length;i<max;i++)
+            {
+              // fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,data)=>
+             // {
+                //     if(err) throw err
+                //     app.post("/data/"+encodeURIComponent(FILEARRAY[i]),(req,res)=>
+                //     {
+                //         res.send(data)
+                //     })
+                // })
+        
+                // sync   
+                app.get("/data/"+encodeURIComponent(FILEARRAY[i]),(reqq,ress)=>
+                {
+                    fs.readFile("../../data/"+FILEARRAY[i],"utf-8",(err,filedata)=>
+                    {
+                        ress.send(filedata)
+                        console.log(filedata)
+                    })
+                })
+            }
             res.send(data)
         })
-
+    
     })
+    
 
     // fs.readFile("../../data/Package","utf-8",(err,data)=>
     // {

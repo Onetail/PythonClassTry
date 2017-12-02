@@ -8,8 +8,6 @@ module.exports=
         {
             if (err) throw err 
             HTMLDATA = data
-            console.log(FILEDATA)
-            console.log(__dirname + '/../../data/data.txt')
             // res.sendFile("index.html" , {root:'../../'})
             fs.readFile("../../data/data.txt",'utf-8',(err,data)=>
             {

@@ -99,7 +99,7 @@ class Test:
 		# with open(Global.ADDRESS+"/Package","a+",encoding="utf-8") as fopen:
 		# 	fopen.write(savefile+" ")		
 		self.cHeckpackagelist()
-	def uPloadtoserver(self):
+	def uPloadtoserver(self,file = Global.ADDRESS):
 		self.cHeckpackagelist()
 		try:
 			# ssh start
@@ -108,7 +108,7 @@ class Test:
 			conn.sFtpconnect()		
 
 			serverfile = conn.sFtplistdir()
-			localfile = os.listdir(Global.ADDRESS)
+			localfile = os.listdir(file)
 			for i in range(len(serverfile)):
 				conn.sFtpremove(file=serverfile[i])
 
