@@ -145,3 +145,13 @@ class Test:
 		with open(Global.ADDRESS+"/Package","w+",encoding="utf-8") as fopen:
 			fopen.write(string)
 		return self
+	def lIstdir(self,type="-N"):
+		string = ""
+		for i in os.listdir(Global.ADDRESS):
+			switch = {
+				"-N":lambda: " {:}".format(i),
+				"-L":lambda: "\n {:}".format(i)
+			}
+			string += switch.get(type)()
+		
+		return string 

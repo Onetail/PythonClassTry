@@ -6,7 +6,6 @@ const url = require("./htmlcomposing")
 
 FILEDATA = ""   //..python string
 HTMLDATA = ""  //..web string  
-SERVEROPENCLOSE = false
 
 IMAGESARRAY = ["title.png","background.png","backgrounddark.png","login.png","close.png","searchbar.png"] //  圖片array
 FILEARRAY = []   // to get 'Package' for know how many file to save

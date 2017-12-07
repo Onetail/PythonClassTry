@@ -1,6 +1,8 @@
 
 function dEtailimages()
 {
+    tEstfunction()  //  !!  for test function 
+
     stringhtml = ""
     $.post("/classimage",(data)=>
     {
@@ -77,4 +79,30 @@ function dArkscreendetail(detail)
         })
     })
     
+}
+function tEstfunction()
+{
+    // i am test for example     by Admin 
+    var tEst = (cAlla) =>
+    {
+        var isfunction = true,
+            i = 0,
+            max = 100
+        if(typeof cAlla === "function") isfunction = true
+        else isfunction = false
+
+        for(i;i<max;i++)
+        {
+            if(isfunction)
+            {
+                console.log(cAlla(i))
+            }
+        }
+    }
+    function cAlla(a)
+    {
+        
+        a = a + 100 
+        return a 
+    }
 }

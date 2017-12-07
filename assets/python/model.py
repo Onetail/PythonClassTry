@@ -34,7 +34,7 @@ class Model:
 							self.mOdelmessage(5,data)
 						else:
 							self.mOdelmessage(4)
-					elif data.strip().upper() == "PRINT" or data.strip().upper() == "LIST" or data.strip().upper() == "LS":
+					elif data.strip().upper() == "PRINT" or data.strip().upper() == "LIST":
 							model.oUtput()
 					elif data.strip().upper() == "DELETE":
 							data = input(">Enter want to delete personnel 'Name': ")
@@ -69,12 +69,13 @@ class Model:
 						test.eXeccommandtoserver(command="cat "+Global.SERVERADDRESS+"/data/講座")
 					elif data.strip().upper() == "RANDOM":
 							#	can random 10 number into build model
-							randomname = test.rAndom()
-							randomvalue = test.rAndom(type="noint")
-							for i in range(len(randomname)):
-									model.aDd(randomname[i],randomvalue[i])
-							self.mOdelmessage(9)
-							
+						randomname = test.rAndom()
+						randomvalue = test.rAndom(type="noint")
+						for i in range(len(randomname)):
+								model.aDd(randomname[i],randomvalue[i])
+						self.mOdelmessage(9)
+					elif data.split(" ")[0].upper() == "LS":
+						self.mOdelmessage("string",test.lIstdir()) if len(data.split(" ")) < 2 else self.mOdelmessage("string",test.lIstdir(type=data.split(" ")[1].upper()))
 					elif data.split(" ")[0].upper() == "UPLOAD":
 						self.mOdelmessage(18) if test.uPloadtoserver() else self.mOdelmessage(19)
 					elif data.strip().upper() == "RESTART SERVER":
@@ -85,6 +86,7 @@ class Model:
 						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever stop " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "MYSERVER":
 						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
+					
 					# elif data.strip().upper() == "TEST"
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":
 							#	input line word save to file
@@ -180,6 +182,7 @@ class Model:
 			18: lambda: "\n\tSuccess! upload new detail to Server .",
 			19: lambda: "\n\tError! Connection come up with error to server .",
 			20: lambda: "\n\tSuccess! {:5} the server".format(data),
+			"string": lambda: "\n\t{:}".format(data),
 			"ename": "\n\tError! the Name is not exist ."
 			
 		}
