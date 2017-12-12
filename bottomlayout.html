@@ -34,13 +34,8 @@
 	</body>
 </html>
 <script>
-  MENUTYPE = 0  //  0 = not choose 
-//  1 = choose 數據
-//  2 = choose 暫時
-//  3 = choose 3
 
-SPEEDTIME = 100 // jquery animation speed time
-
+pointermenu = new pOinterbackgroundmenutype()
 var app = new Vue(
 {
       el: '#app',
@@ -57,62 +52,34 @@ var app = new Vue(
           {
             if(MENUTYPE == 0 || MENUTYPE != 1)
             {
-              $("div.menudata").show(SPEEDTIME)
-              $("div.menuclass").hide(SPEEDTIME)
-              $("div.menuthree").hide(SPEEDTIME)
-              $('div#detailbtn').css("opacity","1")
-              $('div#classbtn').css("opacity","0.5")
-              $('div#anybtn').css("opacity","0.5")
-              MENUTYPE = 1
-            }else
-            {
-              $('div#detailbtn').css("opacity","0.5")
-              $("div.menudata").hide(SPEEDTIME)
-              MENUTYPE = 0
-            }                  
+              pointermenu.iNit()
+              pointermenu.sHow("div#detailbtn","div.menudata",1)
+              pointermenu.bAckpointer("div#detailbtn","div.menudata") // pointer background can release menu bar
+            }else {pointermenu.hIde("div#detailbtn","div.menudata")}                  
           },
           classbtn: (event)=>
           {
             if(MENUTYPE == 0 || MENUTYPE != 2)
           {
-            $("div.menudata").hide(SPEEDTIME)
-            $("div.menuclass").show(SPEEDTIME)
-            $("div.menuthree").hide(SPEEDTIME)
-            $('div#detailbtn').css("opacity","0.5")
-            $('div#classbtn').css("opacity","1")
-            $('div#anybtn').css("opacity","0.5")
-            MENUTYPE = 2
-          }else
-          {
-            $('div#classbtn').css("opacity","0.5")
-            $("div.menuclass").hide(SPEEDTIME)
-            MENUTYPE = 0
-          }
+            pointermenu.iNit()
+            pointermenu.sHow("div#classbtn","div.menuclass",2)
+            pointermenu.bAckpointer("div#classbtn","div.menuclass") // pointer background can release menu bar
+          }else {pointermenu.hIde("div#classbtn","div.menuclass")}
         },
           anybtn: (event)=>
           {
             if(MENUTYPE == 0 || MENUTYPE != 3)
             {
-              $("div.menudata").hide(SPEEDTIME)
-              $("div.menuclass").hide(SPEEDTIME)
-              $("div.menuthree").show(SPEEDTIME)
-              $('div#detailbtn').css("opacity","0.5")
-              $('div#classbtn').css("opacity","0.5")
-              $('div#anybtn').css("opacity","1")
-              MENUTYPE = 3
-            }else
-            {
-              $("div.menuthree").hide(SPEEDTIME)
-              $('div#anybtn').css("opacity","0.5")
-              MENUTYPE = 0
-            }
+              pointermenu.iNit()
+              pointermenu.sHow("div#anybtn","div.menuthree",3)
+              pointermenu.bAckpointer("div#anybtn","div.menuthree") // pointer background can release menu bar
+            }else {pointermenu.hIde("div#anybtn","div.menuthree")}
           },
           detailmenu1: (event)=>
           {
             $.post("/pydata",(data)=>
                   {
                     $("table#maintable").html(data)
-  
                   })
           },
           detailmenu2:(event)=>
@@ -126,8 +93,5 @@ var app = new Vue(
 
       }
 })
-$("img#loginicon").click(()=>
-{
-    $("div#loginframe").fadeIn(SPEEDTIME)
-})
+
 </script>

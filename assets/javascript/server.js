@@ -45,6 +45,8 @@ function gEtfiledata()
 }
 function hTmlurlset()
 {
+    var cssfile = ["index.css","indexsmall.css"]
+    var javascriptfile = ["feature.js","Global.js","control.js"]
     //  put html , css , js file 
     app.get('/', (req, res)=>
     {
@@ -64,18 +66,21 @@ function hTmlurlset()
         res.send(IMAGESARRAY)   
     })
     //  import rwd
-    app.get("/assets/css/index.css",(req,res)=>
+    
+    for(let i = 0 ,max = cssfile.length; i<max ; i++)
     {
-        res.sendFile("index.css",{root:'../../assets/css/'})
-    })
-    app.get("/assets/css/indexsmall.css",(req,res)=>
+        app.get("/assets/css/"+cssfile[i],(req,res)=>
+        {
+            res.sendFile(cssfile[i],{root:"../../assets/css/"})
+        })  
+    }
+    for(let i = 0 , max = javascriptfile.length; i < max ; i++)
     {
-        res.sendFile("indexsmall.css",{root:"../../assets/css/"})
-    })
-    app.get("/assets/javascript/feature.js",(req,res)=>
-    {
-        res.sendFile(__dirname+"/feature.js")
-    })
+        app.get("/assets/javascript/" + javascriptfile[i],(req,res)=>
+        {
+            res.sendFile(__dirname+"/"+javascriptfile[i])
+        })    
+    }
     
     for(let i = 0,max=IMAGESARRAY.length;i<max;i++)
     {

@@ -1,9 +1,15 @@
-
+(()=>
+{
+    $("img#loginicon").click(()=>
+    {
+        $("div#loginframe").fadeIn(SPEEDTIME)
+    })
+})()
 function dEtailimages()
 {
     tEstfunction()  //  !!  for test function 
 
-    stringhtml = ""
+    var stringhtml = ""
     $.post("/classimage",(data)=>
     {
         for(let i = 6,max = data.length ; i < max ; i++)
@@ -17,7 +23,7 @@ function dEtailimages()
 function cLasssearch()
 {
     $("#maintable").html("")    //..clean data
-    ajaxdata = ""
+    var ajaxdata = ""
     $.ajax(
         {
             type: "GET",
@@ -53,8 +59,7 @@ function cLasssearch()
 }
 function dArkscreendetail(detail)
 {
-    screendata = ""
-    console.log(detail)
+    var screendata = ""
     var darkbackground = document.createElement("div")
     darkbackground.id = "darkbackground"
     $.ajax(
@@ -80,10 +85,11 @@ function dArkscreendetail(detail)
     })
     
 }
+
 function tEstfunction()
 {
     // i am test for example     by Admin 
-    var tEst = (cAlla) =>
+    ((cAlla) =>
     {
         var isfunction = true,
             i = 0,
@@ -98,7 +104,9 @@ function tEstfunction()
                 console.log(cAlla(i))
             }
         }
-    }
+    })()
+    
+    //  for example to try new feature 
     function cAlla(a)
     {
         
