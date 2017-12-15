@@ -8,36 +8,36 @@
         webimages[i].src = "http://localhost" + webimages[i]
     }
     
+    // login pattern
+    (()=>
+    {
+        $("img#loginicon").click(()=>
+        {
+            $("div#loginframe").fadeIn(SPEEDTIME)
+            $("#bg").fadeIn(SPEEDTIME)
+        
+        })
+        $("img#loginexit").click(()=>
+        {
+            $("div#loginframe").fadeOut(SPEEDTIME)
+            $("div#loginerror").fadeOut(SPEEDTIME)
+            $("#bg").fadeOut(SPEEDTIME)
+        
+        })
+        $("#logintracebutton").click((e)=>
+        {
             
+            // console.log($("#loginaccount").val())
+            if($("#loginaccount").val()=== "" || $("#loginpassword").val()=== "")
+            {
+                $("div#loginerror").fadeOut(SPEEDTIME/2,()=>
+                {
+                    $("div#loginerror").fadeIn(SPEEDTIME)
+                })
+                e.preventDefault()
+            }
+        
+        })
+    })()          
     
 })()
-
-$("img#loginicon").click(()=>
-{
-    console.log("push!")
-    $("div#loginframe").fadeIn(SPEEDTIME)
-    $("#bg").fadeIn(SPEEDTIME)
-
-})
-$("img#loginexit").click(()=>
-{
-    $("div#loginframe").fadeOut(SPEEDTIME)
-    $("div#loginerror").fadeOut(SPEEDTIME)
-    $("#bg").fadeOut(SPEEDTIME)
-
-})
-$("#logintracebutton").click((e)=>
-{
-    // console.log($("#loginaccount").val())
-    if($("#loginaccount").val()=== "" || $("#loginpassword").val()=== "")
-    {
-        // e.preventDefault()
-        $("div#loginerror").fadeOut(SPEEDTIME/2,()=>
-        {
-            $("div#loginerror").fadeIn(SPEEDTIME)
-        })
-    }else
-    {
-        $("#loginform").submit()
-    }
-})

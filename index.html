@@ -28,13 +28,13 @@
                     <div id="loginerror" style="display:none;color:crimson;font-size:20px;">登入失敗，請核對帳號與密碼</div>
                 </div>
                 <div style="text-align:center">
-                    <input id="loginaccount" class="logintxt"  type="text" placeholder="帳號" pattern="[a-zA-Z0-9_]{4,10}" title="禁用特殊字元，帳號長度在4~10">
+                    <input id="loginaccount" name="loginaccount" class="logintxt"  type="text" placeholder="帳號" pattern="[a-zA-Z0-9_]{4,10}" title="帳號長度在4~10" oninvalid="禁用特殊字元，帳號長度在4~10">
                 </div>
                 <div style="text-align:center">
-                    <input id="loginpassword" class="logintxt"  type="password" placeholder="密碼" pattern="[a-zA-Z0-9_]{4,10}" title = "禁用特殊字元，密碼長度在4~10">
+                    <input id="loginpassword" name="loginpassword" class="logintxt" type="password" placeholder="密碼" pattern="[a-zA-Z0-9_]{4,10}" title="密碼長度在4~10" oninvalid="禁用特殊字元，密碼長度在4~10">
                 </div>
                 <div style="text-align:center;margin-top:15px;">
-                    <input id="logintracebutton" class="loginstyle" type="button" value="登入">
+                    <input id="logintracebutton" class="loginstyle" type="submit" value="登入">
                 </div>
                 <div style="text-align:center;margin-top:10px;">
                         <input id="loginregister" type="button" class="loginstyle" value="註冊">
