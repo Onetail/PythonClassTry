@@ -46,7 +46,7 @@ function gEtfiledata()
 function hTmlurlset()
 {
     var cssfile = ["index.css","indexsmall.css"]
-    var javascriptfile = ["feature.js","Global.js","control.js"]
+    var javascriptfile = ["feature.js","Global.js","control.js","loginmethod.js"]
     //  put html , css , js file 
     app.get('/', (req, res)=>
     {
@@ -154,4 +154,4 @@ function fIleurlset()
 // });
 http.listen(process.env.PORT || 3000, function(){
 	console.log('listening on *:3000' );
-});
+}); 

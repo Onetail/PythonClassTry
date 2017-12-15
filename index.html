@@ -6,9 +6,6 @@
         <link rel="stylesheet" media="screen and (max-width:1280px) " href="/assets/css/indexsmall.css">
         <script src="https://unpkg.com/vue"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/assets/javascript/Global.js"></script>
-        <script src ="/assets/javascript/control.js"></script>
-        <script src="/assets/javascript/feature.js"></script>
         <title>WayneChu</title>
         
     </head>
@@ -16,27 +13,28 @@
         <div id="featureframe">
             <img id='loginicon' src="/assets/images/login.png">
         </div>
+        <div id="topframe">
+                <img id='titleimg' width='300vw' height='60vh' src='/assets/images/title.png'>
+        </div>
         <div id="bg"></div>
         <div id="loginframe">
         <div id="loginpanel">
-            <form method="post" action="">
-                
+            <form id="loginform" method="post" action="/logintxt">
                 <div style="text-align:center;width:100%;left:0;top:1%;font-size:28px;">
-                    
                     <span style="float:right;">
                             <img id="loginexit" src="/assets/images/close.png"></img>
                     </span>
                     使用者登入
                     <div id="loginerror" style="display:none;color:crimson;font-size:20px;">登入失敗，請核對帳號與密碼</div>
                 </div>
-                <div >
-                    <input id="loginaccount" class="logintxt"  type="text" placeholder="帳號">
+                <div style="text-align:center">
+                    <input id="loginaccount" class="logintxt"  type="text" placeholder="帳號" pattern="[a-zA-Z0-9_]{4,10}" title="禁用特殊字元，帳號長度在4~10">
                 </div>
-                <div >
-                    <input id="loginpassword" class="logintxt"  type="password" placeholder="密碼">
+                <div style="text-align:center">
+                    <input id="loginpassword" class="logintxt"  type="password" placeholder="密碼" pattern="[a-zA-Z0-9_]{4,10}" title = "禁用特殊字元，密碼長度在4~10">
                 </div>
                 <div style="text-align:center;margin-top:15px;">
-                    <input id="loginuser" class="loginstyle" type="button" value="登入">
+                    <input id="logintracebutton" class="loginstyle" type="button" value="登入">
                 </div>
                 <div style="text-align:center;margin-top:10px;">
                         <input id="loginregister" type="button" class="loginstyle" value="註冊">
@@ -44,51 +42,4 @@
             </form>
         </div>
         </div>
-
-
-<script>
-    
-    var webimages = ["/assets/images/background.png","/assets/images/backgrounddark.png","/assets/images/close.png","/assets/images/login.png","/assets/images/searchbar.png"]
-    Mainaction = new function()
-    {
         
-        Initui()
-    }
-    function Initui()
-    {
-        var topframe = document.createElement("div")
-        topframe.id = "topframe"
-       
-        document.body.appendChild(topframe)
-        for(let i = 0 ; i < webimages.length;i++)
-        {
-            webimages[i] = new Image()
-            webimages[i].src = "http://localhost" + webimages[i]
-        }
-
-
-        Initdraw()
-    }
-    function Initdraw()
-    {
-        
-        document.getElementById("topframe").innerHTML = "<img id='titleimg' width='300vw' height='60vh' src='/assets/images/title.png'></img>"
-    }
-    $("img#loginicon").click(()=>
-    {
-        $("div#loginframe").fadeIn(SPEEDTIME)
-        $("#bg").fadeIn(SPEEDTIME)
-
-    })
-    $("img#loginexit").click(()=>
-    {
-        $("div#loginframe").fadeOut(SPEEDTIME)
-        $("div#loginerror").fadeOut(SPEEDTIME)
-        $("#bg").fadeOut(SPEEDTIME)
-
-    })
-    $("#loginuser").click(()=>
-    {
-        $("div#loginerror").fadeIn(SPEEDTIME)
-    })
-</script>

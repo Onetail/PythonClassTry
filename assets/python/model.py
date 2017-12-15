@@ -82,6 +82,7 @@ class Model:
 						self.mOdelmessage(20,data = "restart") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever restart " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "START SERVER":
 						self.mOdelmessage(20,data="start") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever start " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
+						# test.eXeccommandtoserver(command = "cd "+ Global.SERVERADDRESS + "/additional/game/tankio && forever start " + Global.SERVERNODEJSFILENAME)
 					elif data.strip().upper() == "STOP SERVER":
 						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever stop " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
 					elif data.strip().upper() == "MYSERVER":
