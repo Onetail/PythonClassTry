@@ -21,7 +21,6 @@
             $("div#loginframe").fadeOut(SPEEDTIME)
             $("div#loginerror").fadeOut(SPEEDTIME)
             $("#bg").fadeOut(SPEEDTIME)
-        
         })
         $("#logintracebutton").click((e)=>
         {

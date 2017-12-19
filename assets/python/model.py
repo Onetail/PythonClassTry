@@ -85,8 +85,14 @@ class Model:
 						# test.eXeccommandtoserver(command = "cd "+ Global.SERVERADDRESS + "/additional/game/tankio && forever start " + Global.SERVERNODEJSFILENAME)
 					elif data.strip().upper() == "STOP SERVER":
 						self.mOdelmessage(20,data="stop") if test.eXeccommandtoserver(command="cd "+Global.SERVERADDRESS +"/assets/javascript && forever stop " + Global.SERVERNODEJSFILENAME) else self.mOdelmessage(19)
-					elif data.strip().upper() == "MYSERVER":
-						self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
+					elif data.strip().upper() == "MYSERVER":	# the feature has no finished ! 
+						inputexec = ""
+						while 1:
+							inputexec = input(">>>>> ")
+							if inputexec.upper()  == "EXIT":
+								break
+							test.eXeccommandtoserver(command=inputexec)
+						# self.mOdelmessage(20,data="list") if test.eXeccommandtoserver(command="forever list") else self.mOdelmessage(19)
 					
 					# elif data.strip().upper() == "TEST"
 					elif data.strip().upper() == "W" or data.strip().upper() == "WRITE":

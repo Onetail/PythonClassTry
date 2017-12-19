@@ -4,13 +4,14 @@ const http = require("http").createServer(app)
 const fs = require("fs")
 const url = require("./htmlcomposing")
 
+
 FILEDATA = ""   //..python string
 HTMLDATA = ""  //..web string  
 
 IMAGESARRAY = ["title.png","background.png","backgrounddark.png","login.png","close.png","searchbar.png"] //  圖片array
-FILEARRAY = []   // to get 'Package' for know how many file to save
+FILEARRAY = [] ;  // to get 'Package' for know how many file to save
 
-mAinrunning = new function()    // init fs and array
+(()=>    // init fs and array
 {
     // var keyPath = __dirname + '/.ssl/private.key';
     // var certPath = __dirname + '/.ssl/certificate.crt';
@@ -22,15 +23,13 @@ mAinrunning = new function()    // init fs and array
     //     key: hskey,
     //     cert: hscert
     // };
-    
     for(var i = 1 ; i <=25;i++)
     {
         IMAGESARRAY.push(i+".jpg")
     }
     gEtfiledata()
-    console.log(FILEARRAY)
     hTmlurlset()
-}
+})()
 function gEtfiledata()
 {
     FILEARRAY = []  // init
@@ -71,14 +70,14 @@ function hTmlurlset()
     {
         app.get("/assets/css/"+cssfile[i],(req,res)=>
         {
-            res.sendFile(cssfile[i],{root:"../../assets/css/"})
+            res.sendFile(cssfile[i],{root:"../css/"})
         })  
     }
     for(let i = 0 , max = javascriptfile.length; i < max ; i++)
     {
         app.get("/assets/javascript/" + javascriptfile[i],(req,res)=>
         {
-            res.sendFile(__dirname+"/"+javascriptfile[i])
+            res.sendFile(javascriptfile[i],{root:"../javascript/"})
         })    
     }
     
