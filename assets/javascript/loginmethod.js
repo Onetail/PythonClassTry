@@ -15,7 +15,6 @@
         {
             $("div#loginframe").fadeIn(SPEEDTIME)
             $("#bg").fadeIn(SPEEDTIME)
-        
         })
         $("img#loginexit").click(()=>
         {
