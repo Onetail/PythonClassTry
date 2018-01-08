@@ -6,6 +6,10 @@ body
     background:url(../images/background.png) center center no-repeat;
     background-size: cover;
 }
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 #bg
 {
     position: fixed;
@@ -101,6 +105,7 @@ body
 }
 ::-webkit-scrollbar {
     width: 15px;
+    
 }
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
@@ -113,15 +118,17 @@ body
 }
 #centerframe
 {
+   margin:0 auto;
    height:60%;
    overflow: hidden;
+   
    
 }
 #centerframe:hover
 {
     position: relative;
     left:7.5px;
-    overflow:scroll;
+    overflow-y: scroll;
     
 }
 /* python 後台data */

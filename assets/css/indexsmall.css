@@ -6,6 +6,10 @@ body
     background:url(../images/background.png) center center no-repeat;
     background-size: cover;
 }
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 #bg
 {
     position: fixed;

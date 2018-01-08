@@ -3,10 +3,10 @@ const app = require('express')();
 const http = require("http").createServer(app)
 const fs = require("fs")
 const url = require("./htmlcomposing")
+const global = require("./Global")
 
-
-FILEDATA = ""   //..python string
-HTMLDATA = ""  //..web string  
+// FILEDATA = ""   //..python string
+// HTMLDATA = ""  //..web string  
 
 IMAGESARRAY = ["title.png","background.png","backgrounddark.png","login.png","close.png","searchbar.png"] //  圖片array
 FILEARRAY = [] ;  // to get 'Package' for know how many file to save
