@@ -74,6 +74,8 @@ class Model:
 						for i in range(len(randomname)):
 								model.aDd(randomname[i],randomvalue[i])
 						self.mOdelmessage(9)
+					elif data.split(" ")[0].upper() == "MYIP":
+						self.mOdelmessage(type="myip",data=Global.SERVERIP)
 					elif data.split(" ")[0].upper() == "LS":
 						self.mOdelmessage("string",test.lIstdir()) if len(data.split(" ")) < 2 else self.mOdelmessage("string",test.lIstdir(type=data.split(" ")[1].upper()))
 					elif data.split(" ")[0].upper() == "UPLOAD":
@@ -190,8 +192,8 @@ class Model:
 			19: lambda: "\n\tError! Connection come up with error to server .",
 			20: lambda: "\n\tSuccess! {:5} the server".format(data),
 			"string": lambda: "\n\t{:}".format(data),
-			"ename": "\n\tError! the Name is not exist ."
-			
+			"ename": "\n\tError! the Name is not exist .",
+			"myip": lambda: "\n\t[Ip] {:} ".format(data),
 		}
 		# type =str(type).upper()
 		return print(switch.get(type)())
